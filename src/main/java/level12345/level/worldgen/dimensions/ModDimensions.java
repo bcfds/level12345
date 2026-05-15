@@ -44,6 +44,12 @@ public class ModDimensions {
             ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level8"));
     public static final ResourceKey<DimensionType> LEVEL8_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level8_type"));
+    public static final ResourceKey<LevelStem> LEVEL2_KEY = ResourceKey.create(Registries.LEVEL_STEM,
+            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2"));
+    public static final ResourceKey<net.minecraft.world.level.Level> LEVEL2_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
+            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2"));
+    public static final ResourceKey<DimensionType> LEVEL2_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
+            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2_type"));
 
     public static void bootstraptype(BootstapContext<DimensionType> context){
         context.register(KAUPENDIM_DIM_TYPE, new DimensionType(
