@@ -32,6 +32,10 @@ public class ModBlocks {
             ()->new LEVEL3PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
     public static final RegistryObject<Block> LEVEL8_PORTAL = registerBlock("level8_portal",
             ()->new LEVEL8PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
+    public static final RegistryObject<Block> LEVEL2_PORTAL = registerBlock("level2_portal",
+            ()->new LEVEL2PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
+    public static final RegistryObject<Block> LEVEL0_PORTAL = registerBlock("level0_portal",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> blocks = BLOCKS.register(name, block);
