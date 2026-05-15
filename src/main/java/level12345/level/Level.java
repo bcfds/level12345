@@ -114,4 +114,68 @@ public class Level {
 //            gen.addProvider(true,new MissingDimensionFix(gen,lookupProvider));
         }
     }
+    public static final SimpleChannel NETWORK = NetworkRegistry.newSimpleChannel(
+            ResourceLocation.fromNamespaceAndPath(MOD_ID, "sanity_sync"),
+            () -> "1.0",
+            s -> true,
+            s -> true
+    );
+    private static final ResourceLocation SANITY_TEXTURE = ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/gui/sanity_icon.png");
+
+    public Level() {
+        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.addListener(this::attachCapability);
+
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            MinecraftForge.EVENT_BUS.addListener(this::registerOverlay);
+        }
+    }
+
+    // 将 SAN 值附加到玩家身上
+    private void attachCapability(AttachCapabilitiesEvent<Entity> event) {
+        if (event.getObject() instanceof Player) {
+            event.addCapability(ResourceLocation.fromNamespaceAndPath(MOD_ID, "sanity"), new SanityProvider());
+        }
+    }
+
+    // 注册 HUD 叠加层
+    private void registerOverlay(RegisterGuiOverlaysEvent event) {
+        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "sanity", guiGraphics -> {
+            Player player = Minecraft.getInstance().player;
+            if (player == null) return;
+
+            // 获取玩家的 SAN 值
+            player.getCapability(SanityProvider.PLAYER_SANITY).ifPresent(sanity -> {
+                int currentSanity = sanity.getSanity();
+
+                // 绘制贴图 (x=10, y=10, 宽高=20)
+                RenderSystem.enableBlend();
+//                guiGraphics.blit(SANITY_TEXTURE, 10, 10, 0, 0, 20, 20, 20, 20);
+
+                // 绘制文字
+//                guiGraphics.drawString(Minecraft.getInstance().font, "SAN: " + currentSanity, 35, 15, 0xFFFFFF);
+            });
+        });
+    }
+    @SubscribeEvent
+    public static void onRenderGameOverlay(RegisterGuiOverlaysEvent event) {
+        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "sanity", (GuiGraphics guiGraphics) -> {
+            // 1. 获取玩家
+            Minecraft mc = Minecraft.getInstance();
+            Player player = mc.player;
+            if (player == null) return;
+
+            // 2. 获取 Sanity 数据
+            player.getCapability(SanityProvider.PLAYER_SANITY).resolve().ifPresent((ISanity sanityData) -> {
+                int currentSanity = sanityData.getSanity();
+
+                // 3. 绘制贴图 (使用 guiGraphics)
+                RenderSystem.enableBlend();
+                guiGraphics.blit(SANITY_TEXTURE, 10, 10, 0, 0, 20, 20, 20, 20);
+
+                // 4. 绘制文字 (使用 guiGraphics)
+                guiGraphics.drawString(mc.font, "SAN: " + currentSanity, 35, 15, 0xFFFFFF);
+            });
+        });
+    }
 }
