@@ -1,9 +1,7 @@
 package level12345.level.block;
 
 import level12345.level.Level;
-import level12345.level.block.custom.LEVEL3PortalBlock;
-import level12345.level.block.custom.LEVEL8PortalBlock;
-import level12345.level.block.custom.ModPortalBlock;
+import level12345.level.block.custom.*;
 import level12345.level.item.Moditems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

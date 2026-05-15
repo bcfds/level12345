@@ -103,6 +103,23 @@ public class ModDimensions {
                 1.0f,
                 new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
         ));
+        context.register(LEVEL2_DIM_TYPE, new DimensionType(
+                OptionalLong.of(12000),
+                false,
+                false,
+                false,
+                false,
+                1.0,
+                true,
+                false,
+                0,
+                256,
+                256,
+                BlockTags.INFINIBURN_OVERWORLD,
+                BuiltinDimensionTypes.OVERWORLD_EFFECTS,
+                1.0f,
+                new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
+        ));
     }
 
     public static void bootstrapStem(BootstapContext<LevelStem> context){
