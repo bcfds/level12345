@@ -21,7 +21,7 @@ public class LEVEL8PortalBlock extends Block {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (pPlayer.canChangeDimensions()) {
             if (!pLevel.isClientSide) {
-                handleLevel3Portal(pPlayer, pPos);
+                handleLevel8Portal(pPlayer, pPos);
             }
             return InteractionResult.SUCCESS;
         } else {
