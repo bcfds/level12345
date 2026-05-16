@@ -173,15 +173,27 @@
     },
     "done": true
   },
-  "minecraft:recipes/food/cooked_porkchop": {
-    "criteria": {
-      "has_porkchop": "2026-05-15 23:18:14 +0800"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/pink_bed": {
     "criteria": {
       "has_pink_wool": "2026-05-15 23:15:05 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/pink_carpet": {
+    "criteria": {
+      "has_pink_wool": "2026-05-15 23:15:05 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/pink_banner": {
+    "criteria": {
+      "has_pink_wool": "2026-05-15 23:15:05 +0800"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_porkchop": {
+    "criteria": {
+      "has_porkchop": "2026-05-15 23:18:14 +0800"
     },
     "done": true
   },
@@ -197,15 +209,27 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/pink_carpet": {
+  "minecraft:recipes/misc/sugar_from_sugar_cane": {
     "criteria": {
-      "has_pink_wool": "2026-05-15 23:15:05 +0800"
+      "has_sugar_cane": "2026-05-15 23:26:19 +0800"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/pink_banner": {
+  "minecraft:recipes/misc/paper": {
     "criteria": {
-      "has_pink_wool": "2026-05-15 23:15:05 +0800"
+      "has_reeds": "2026-05-15 23:26:19 +0800"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/balanced_diet": {
+    "criteria": {
+      "porkchop": "2026-05-15 23:26:27 +0800"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-05-15 23:26:27 +0800"
     },
     "done": true
   },

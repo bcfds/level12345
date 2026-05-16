@@ -11,9 +11,12 @@ import level12345.level.item.Moditems;
 import level12345.level.worldgen.dimensions.ModDimensions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -33,7 +36,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -62,6 +65,7 @@ import java.util.concurrent.CompletableFuture;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Level.MOD_ID)
 public class Level {
+    public static final Capability<ISanity> PLAYER_SANITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "level";
@@ -142,7 +146,6 @@ public class Level {
     public Level() {
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.addListener(this::attachCapability);
-
         if (FMLEnvironment.dist == Dist.CLIENT) {
             MinecraftForge.EVENT_BUS.addListener(this::registerOverlay);
         }
@@ -157,7 +160,7 @@ public class Level {
 
     // 注册 HUD 叠加层
     private void registerOverlay(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "sanity", guiGraphics -> {
+        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "sanity",  (gui, guiGraphics, partialTick, screenWidth, screenHeight)-> {
             Player player = Minecraft.getInstance().player;
             if (player == null) return;
 
@@ -166,28 +169,26 @@ public class Level {
                 int currentSanity = sanity.getSanity();
 
                 // 绘制贴图 (x=10, y=10, 宽高=20)
-                RenderSystem.enableBlend();
-//                guiGraphics.blit(SANITY_TEXTURE, 10, 10, 0, 0, 20, 20, 20, 20);
+                guiGraphics.blit(SANITY_TEXTURE, 10, 10, 0, 0, 20, 20, 20, 20);
 
                 // 绘制文字
-//                guiGraphics.drawString(Minecraft.getInstance().font, "SAN: " + currentSanity, 35, 15, 0xFFFFFF);
+                guiGraphics.drawString(Minecraft.getInstance().font, "SAN: " + currentSanity, 35, 15, 0xFFFFFF);
             });
         });
     }
     @SubscribeEvent
     public static void onRenderGameOverlay(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "sanity", (GuiGraphics guiGraphics) -> {
+        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "sanity", (gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
             // 1. 获取玩家
             Minecraft mc = Minecraft.getInstance();
             Player player = mc.player;
-            if (player == null) return;
+            if (mc.level == null || mc.player == null) {return;};
 
             // 2. 获取 Sanity 数据
             player.getCapability(SanityProvider.PLAYER_SANITY).resolve().ifPresent((ISanity sanityData) -> {
                 int currentSanity = sanityData.getSanity();
 
                 // 3. 绘制贴图 (使用 guiGraphics)
-                RenderSystem.enableBlend();
                 guiGraphics.blit(SANITY_TEXTURE, 10, 10, 0, 0, 20, 20, 20, 20);
 
                 // 4. 绘制文字 (使用 guiGraphics)

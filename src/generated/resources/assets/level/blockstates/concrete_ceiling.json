@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "level:block/concrete_ceiling"
+    }
+  }
+}
