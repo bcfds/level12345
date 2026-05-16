@@ -44,6 +44,12 @@ public class ModDimensions {
             ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level8"));
     public static final ResourceKey<DimensionType> LEVEL8_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
             ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level8_type"));
+    public static final ResourceKey<LevelStem> LEVEL2_KEY = ResourceKey.create(Registries.LEVEL_STEM,
+            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2"));
+    public static final ResourceKey<net.minecraft.world.level.Level> LEVEL2_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
+            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2"));
+    public static final ResourceKey<DimensionType> LEVEL2_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
+            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2_type"));
 
     public static void bootstraptype(BootstapContext<DimensionType> context){
         context.register(KAUPENDIM_DIM_TYPE, new DimensionType(
@@ -81,6 +87,23 @@ public class ModDimensions {
                 new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
         ));
         context.register(LEVEL8_DIM_TYPE, new DimensionType(
+                OptionalLong.of(12000),
+                false,
+                false,
+                false,
+                false,
+                1.0,
+                true,
+                false,
+                0,
+                256,
+                256,
+                BlockTags.INFINIBURN_OVERWORLD,
+                BuiltinDimensionTypes.OVERWORLD_EFFECTS,
+                1.0f,
+                new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
+        ));
+        context.register(LEVEL2_DIM_TYPE, new DimensionType(
                 OptionalLong.of(12000),
                 false,
                 false,

@@ -134,46 +134,70 @@ Adding Libraries to Inheritance
 Reading Input: D:\JetBrains\untitled4\build\libs\level-1.0.0.jar
 Adding input to inheritance map
 Processing entries
+Conflicting propagated mapping for level12345/level/block/custom/LEVEL0PortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for level12345/level/block/custom/LEVEL8PortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for level12345/level/block/custom/LEVEL2PortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for level12345/level/block/custom/ModPortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for level12345/level/block/custom/LEVEL3PortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
 Conflicting propagated mapping for level12345/level/datagen/ModWorldGenProvider/getName()Ljava/lang/String; from net/minecraft/data/registries/RegistriesDatapackGenerator/getName()Ljava/lang/String;: getName -> m_6055_
 Conflicting propagated mapping for net/minecraftforge/client/model/generators/BlockStateProvider/run(Lnet/minecraft/data/CachedOutput;)Ljava/util/concurrent/CompletableFuture; from net/minecraft/data/DataProvider/run(Lnet/minecraft/data/CachedOutput;)Ljava/util/concurrent/CompletableFuture;: run -> m_213708_
 Conflicting propagated mapping for net/minecraftforge/client/model/generators/BlockStateProvider/getName()Ljava/lang/String; from net/minecraft/data/DataProvider/getName()Ljava/lang/String;: getName -> m_6055_
-Conflicting propagated mapping for level12345/level/block/custom/LEVEL8PortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
-Conflicting propagated mapping for level12345/level/block/custom/LEVEL3PortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
-Conflicting propagated mapping for level12345/level/block/custom/ModPortalBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
 Conflicting propagated mapping for net/minecraftforge/client/model/generators/ModelProvider/run(Lnet/minecraft/data/CachedOutput;)Ljava/util/concurrent/CompletableFuture; from net/minecraft/data/DataProvider/run(Lnet/minecraft/data/CachedOutput;)Ljava/util/concurrent/CompletableFuture;: run -> m_213708_
 Conflicting propagated mapping for net/minecraftforge/client/model/generators/BlockModelProvider/getName()Ljava/lang/String; from net/minecraft/data/DataProvider/getName()Ljava/lang/String;: getName -> m_6055_
 Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
+Conflicting propagated mapping for net/minecraftforge/client/gui/overlay/ForgeGui/clearCache()V from net/minecraft/client/gui/Gui/clearCache()V: clearCache -> m_93091_
+Conflicting propagated mapping for net/minecraftforge/client/gui/overlay/ForgeGui/render(Lnet/minecraft/client/gui/GuiGraphics;F)V from net/minecraft/client/gui/Gui/render(Lnet/minecraft/client/gui/GuiGraphics;F)V: render -> m_280421_
+Conflicting propagated mapping for net/minecraftforge/client/gui/overlay/ForgeGui/renderPortalOverlay(Lnet/minecraft/client/gui/GuiGraphics;F)V from net/minecraft/client/gui/Gui/renderPortalOverlay(Lnet/minecraft/client/gui/GuiGraphics;F)V: renderPortalOverlay -> m_280379_
+Conflicting propagated mapping for net/minecraftforge/client/gui/overlay/ForgeGui/renderJumpMeter(Lnet/minecraft/world/entity/PlayerRideableJumping;Lnet/minecraft/client/gui/GuiGraphics;I)V from net/minecraft/client/gui/Gui/renderJumpMeter(Lnet/minecraft/world/entity/PlayerRideableJumping;Lnet/minecraft/client/gui/GuiGraphics;I)V: renderJumpMeter -> m_280069_
 Adding extras
 Sorting
 Writing Output: D:\JetBrains\untitled4\build\reobfJar\output.jar
   META-INF/
   META-INF/MANIFEST.MF
   META-INF/mods.toml
+  assets/
+  assets/level/
+  assets/level/textures/
+  assets/level/textures/gui/
+  assets/level/textures/gui/sanity_icon.png
   data/
   data/level/
   data/level/dimension/
   data/level/dimension/kaupendim.json
+  data/level/dimension/level2.json
   data/level/dimension/level3.json
   data/level/dimension/level8.json
   data/level/dimension_type/
   data/level/dimension_type/kaupendim_type.json
+  data/level/dimension_type/level2_type.json
   data/level/dimension_type/level3_type.json
   data/level/dimension_type/level8_type.json
   level.mixins.json
   level12345/
   level12345/level/
   level12345/level/Config.class
+  level12345/level/Level$1.class
   level12345/level/Level$ClientModEvents.class
   level12345/level/Level.class
+  level12345/level/ModEventBusEvents$1.class
+  level12345/level/ModEventBusEvents.class
   level12345/level/block/
   level12345/level/block/ModBlocks.class
   level12345/level/block/custom/
+  level12345/level/block/custom/LEVEL0PortalBlock.class
+  level12345/level/block/custom/LEVEL2PortalBlock.class
   level12345/level/block/custom/LEVEL3PortalBlock.class
   level12345/level/block/custom/LEVEL8PortalBlock.class
   level12345/level/block/custom/ModPortalBlock.class
   level12345/level/block/entity/
   level12345/level/block/entity/ModBlocks.class
+  level12345/level/capability/
+  level12345/level/capability/ISanity.class
+  level12345/level/capability/SanityProvider$1.class
+  level12345/level/capability/SanityProvider$2.class
+  level12345/level/capability/SanityProvider$3.class
+  level12345/level/capability/SanityProvider.class
   level12345/level/datagen/
   level12345/level/datagen/ModWorldGenProvider.class
   level12345/level/datagen/loot/

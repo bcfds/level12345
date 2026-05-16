@@ -1,9 +1,7 @@
 package level12345.level.block;
 
 import level12345.level.Level;
-import level12345.level.block.custom.LEVEL3PortalBlock;
-import level12345.level.block.custom.LEVEL8PortalBlock;
-import level12345.level.block.custom.ModPortalBlock;
+import level12345.level.block.custom.*;
 import level12345.level.item.Moditems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -32,6 +30,18 @@ public class ModBlocks {
             ()->new LEVEL3PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
     public static final RegistryObject<Block> LEVEL8_PORTAL = registerBlock("level8_portal",
             ()->new LEVEL8PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
+    public static final RegistryObject<Block> LEVEL2_PORTAL = registerBlock("level2_portal",
+            ()->new LEVEL2PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
+    public static final RegistryObject<Block> LEVEL0_PORTAL = registerBlock("level0_portal",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
+    public static final RegistryObject<Block> concrete_ceiling = registerBlock("concrete_ceiling",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+    public static final RegistryObject<Block> concrete_floor = registerBlock("concrete_floor",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+    public static final RegistryObject<Block> concrete_wall = registerBlock("concrete_wall",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+    public static final RegistryObject<Block> cracked_concrete_floor = registerBlock("cracked_concrete_floor",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> blocks = BLOCKS.register(name, block);
