@@ -35,17 +35,17 @@ public class ModBlocks {
     public static final RegistryObject<Block> LEVEL0_PORTAL = registerBlock("level0_portal",
             ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(50.0f).noLootTable().noOcclusion().noCollission()));
     public static final RegistryObject<Block> concrete_ceiling = registerBlock("concrete_ceiling",
-            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+            () -> new Block(BlockBehaviour.Properties.of().strength(-1)));
     public static final RegistryObject<Block> concrete_floor = registerBlock("concrete_floor",
-            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1)));
     public static final RegistryObject<Block> concrete_wall = registerBlock("concrete_wall",
-            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1)));
     public static final RegistryObject<Block> cracked_concrete_floor = registerBlock("cracked_concrete_floor",
-            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1)));
     public static final RegistryObject<Block> light_tube_off = registerBlock("light_tube_off",
-            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1)));
     public static final RegistryObject<Block> light_tube_on = registerBlock("light_tube_on",
-            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1).lightLevel(state -> 15)));
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1).lightLevel(state -> 15)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> blocks = BLOCKS.register(name, block);
