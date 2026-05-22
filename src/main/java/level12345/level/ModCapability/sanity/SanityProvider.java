@@ -1,5 +1,6 @@
 package level12345.level.ModCapability.sanity;
 
+import level12345.level.ModCapability.ModCapabilities;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.*;
@@ -9,37 +10,24 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class SanityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static final Capability<ISanity> PLAYER_SANITY = CapabilityManager.get(new CapabilityToken<>() {});
+    private final ISanity sanityData = new SanityDataManager();
+    private final LazyOptional<ISanity> optional = LazyOptional.of(() -> sanityData);
 
-    private ISanity instance = new ISanity() {
-        private int sanity = 100; // 默认满值100
-
-        // interface method implement
-        @Override public int getSanity() { return sanity; }
-        @Override public void setSanity(int sanity) { this.sanity = Math.max(0, Math.min(100, sanity)); }
-        @Override public void addSanity(int amount) { setSanity(this.sanity + amount); }
-        @Override public boolean isDepleted() { return sanity <= 0; }
-
-        public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-            return SanityProvider.PLAYER_SANITY.orEmpty(cap, optional);
-        }
-    };
-    private final LazyOptional<ISanity> optional = LazyOptional.of(() -> instance);
-
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return PLAYER_SANITY.orEmpty(cap, optional);
+    @Override
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+        // 当Forge询问是否有Sanity能力时，返回数据实例
+        return ModCapabilities.PLAYER_SANITY.orEmpty(cap, optional);
     }
 
+    @Override
     public CompoundTag serializeNBT() {
-        CompoundTag tag = new CompoundTag();
-        tag.putInt("sanity", instance.getSanity());
-        return tag;
+        // 存档时调用，将数据转为NBT
+        return sanityData.serializeNBT();
     }
 
+    @Override
     public void deserializeNBT(CompoundTag nbt) {
-        instance.setSanity(nbt.getInt("sanity"));
+        // 读档时调用，从NBT恢复数据
+        sanityData.deserializeNBT(nbt);
     }
-    public static final Capability<ISanity> SANITY_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
-
-
 }

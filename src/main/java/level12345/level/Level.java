@@ -2,26 +2,18 @@ package level12345.level;
 
 import com.mojang.logging.LogUtils;
 import level12345.level.block.ModBlocks;
-import level12345.level.ModCapability.sanity.ISanity;
-import level12345.level.ModCapability.sanity.SanityProvider;
 import level12345.level.item.Moditems;
 import net.minecraft.client.Minecraft;
 
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
-import net.minecraftforge.common.capabilities.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,7 +22,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -53,11 +44,11 @@ public class Level {
     public Level(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
+        //region ModEventBus
         // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
         ModBlocks.register(modEventBus);
         Moditems.register(modEventBus);
-
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -66,10 +57,7 @@ public class Level {
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-    }
-    private void addDataProviders(GatherDataEvent event) {
-        DataGenerator generator = event.getGenerator();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        //end region
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -118,59 +106,4 @@ public class Level {
             s -> true,
             s -> true
     );
-    private static final ResourceLocation SANITY_TEXTURE = ResourceLocation.fromNamespaceAndPath(MOD_ID, "textures/gui/sanity_icon.png");
-
-    public Level() {
-        MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.addListener(this::attachCapability);
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            MinecraftForge.EVENT_BUS.addListener(this::registerOverlay);
-        }
-    }
-
-    // 将 SAN 值附加到玩家身上
-    private void attachCapability(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof Player) {
-            event.addCapability(ResourceLocation.fromNamespaceAndPath(MOD_ID, "sanity"), new SanityProvider());
-        }
-    }
-
-    // 注册 HUD 叠加层
-    private void registerOverlay(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "sanity",  (gui, guiGraphics, partialTick, screenWidth, screenHeight)-> {
-            Player player = Minecraft.getInstance().player;
-            if (player == null) return;
-
-            // 获取玩家的 SAN 值
-            player.getCapability(SanityProvider.PLAYER_SANITY).ifPresent(sanity -> {
-                int currentSanity = sanity.getSanity();
-
-                // 绘制贴图 (x=10, y=10, 宽高=20)
-                guiGraphics.blit(SANITY_TEXTURE, 10, 10, 0, 0, 20, 20, 20, 20);
-
-                // 绘制文字
-                guiGraphics.drawString(Minecraft.getInstance().font, "SAN: " + currentSanity, 35, 15, 0xFFFFFF);
-            });
-        });
-    }
-    @SubscribeEvent
-    public static void onRenderGameOverlay(RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.PLAYER_HEALTH.id(), "sanity", (gui, guiGraphics, partialTick, screenWidth, screenHeight) -> {
-            // 1. 获取玩家
-            Minecraft mc = Minecraft.getInstance();
-            Player player = mc.player;
-            if (mc.level == null || mc.player == null) {return;};
-
-            // 2. 获取 Sanity 数据
-            player.getCapability(SanityProvider.PLAYER_SANITY).resolve().ifPresent((ISanity sanityData) -> {
-                int currentSanity = sanityData.getSanity();
-
-                // 3. 绘制贴图 (使用 guiGraphics)
-                guiGraphics.blit(SANITY_TEXTURE, 10, 10, 0, 0, 20, 20, 20, 20);
-
-                // 4. 绘制文字 (使用 guiGraphics)
-                guiGraphics.drawString(mc.font, "SAN: " + currentSanity, 35, 15, 0xFFFFFF);
-            });
-        });
-    }
 }
