@@ -1,19 +1,20 @@
 package level12345.level;
 
 import com.mojang.logging.LogUtils;
+import level12345.level.ModCapability.ModCapabilities;
+import level12345.level.ModCapability.sanity.SanityEventHandler;
+import level12345.level.ModCapability.sanity.SanityRender;
+import level12345.level.ModCapability.sanity.SanitySyncPacket;
 import level12345.level.block.ModBlocks;
 import level12345.level.item.Moditems;
 import net.minecraft.client.Minecraft;
 
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,8 +28,6 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
-import java.util.concurrent.CompletableFuture;
-
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Level.MOD_ID)
 public class Level {
@@ -38,7 +37,7 @@ public class Level {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "level";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
     public Level(FMLJavaModLoadingContext context) {
@@ -58,6 +57,10 @@ public class Level {
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         //end region
+
+        //触发类加载，虽然不知道是否真的需要
+        ModCapabilities.class.toString();
+        SanityEventHandler.class.toString();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -93,17 +96,23 @@ public class Level {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
-        public static void gatherData(GatherDataEvent event){
-            DataGenerator gen = event.getGenerator();
-            CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-//            gen.addProvider(true,new MissingDimensionFix(gen,lookupProvider));
+            // 确保 SanityRender 类被加载，以触发其 @EventBusSubscriber
+            SanityRender.class.toString();
+            Level.LOGGER.info("SanityRender registered for client.");
         }
     }
+
+
+
     public static final SimpleChannel NETWORK = NetworkRegistry.newSimpleChannel(
             ResourceLocation.fromNamespaceAndPath(MOD_ID, "sanity_sync"),
             () -> "1.0",
             s -> true,
             s -> true
     );
+    static {
+        int packetId = 0;
+        NETWORK.registerMessage(packetId++, SanitySyncPacket.class, SanitySyncPacket::encode, SanitySyncPacket::decode, SanitySyncPacket::handle);
+        Level.LOGGER.info("Sanity sync packet registered with ID: {}", packetId - 1);
+    }
 }
