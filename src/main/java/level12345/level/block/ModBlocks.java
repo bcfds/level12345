@@ -42,6 +42,10 @@ public class ModBlocks {
             ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
     public static final RegistryObject<Block> cracked_concrete_floor = registerBlock("cracked_concrete_floor",
             ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+    public static final RegistryObject<Block> light_tube_off = registerBlock("light_tube_off",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1)));
+    public static final RegistryObject<Block> light_tube_on = registerBlock("light_tube_on",
+            ()->new LEVEL0PortalBlock(BlockBehaviour.Properties.of().strength(-1).lightLevel(state -> 15)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> blocks = BLOCKS.register(name, block);
