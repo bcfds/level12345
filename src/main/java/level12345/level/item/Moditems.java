@@ -3,6 +3,7 @@ package level12345.level.item;
 import level12345.level.Level;
 import level12345.level.block.ModBlocks;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -17,8 +18,10 @@ import java.util.function.Supplier;
 public class Moditems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Level.MOD_ID);
-    public static final RegistryObject<Item> MOD_PORTAL = ITEMS.register("my_block",
-            () -> new BlockItem(ModBlocks.MOD_PORTAL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> huo_yan = ITEMS.register("huo_yan", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> bottle_light = ITEMS.register("bottle_light", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<CrossbowItem> CROSSGUN = ITEMS.register("crossgun", ()->new CrossbowItem((new Item.Properties()).stacksTo(111).durability(0)));
+
 //    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
 //
 //    }

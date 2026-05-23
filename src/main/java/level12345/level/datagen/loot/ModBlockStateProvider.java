@@ -12,7 +12,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModBlockStateProvider extends BlockStateProvider {
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        // PackOutput 用于输出文件，ExistingFileHelper 用于检查文件是否存在
         super(output, Level.MOD_ID, exFileHelper);
     }
 

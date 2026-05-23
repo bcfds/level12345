@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import level12345.level.block.ModBlocks;
 import level12345.level.capability.ISanity;
+import level12345.level.entity.ModEntities;
 import net.minecraft.client.gui.GuiGraphics;
 import level12345.level.capability.SanityProvider;
 import level12345.level.item.Moditems;
@@ -80,6 +81,7 @@ public class Level {
         modEventBus.addListener(this::commonSetup);
         ModBlocks.register(modEventBus);
         Moditems.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
