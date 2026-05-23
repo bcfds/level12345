@@ -7,7 +7,6 @@ public interface ISanity {
     void setSanity(int sanity);
     void addSanity(int amount);
 
-    //
     boolean isSanityFull(); // 理智值是否满值
     boolean isSanityEmpty(); // 理智值是否耗尽
 

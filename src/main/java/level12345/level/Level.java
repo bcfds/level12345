@@ -8,24 +8,18 @@ import level12345.level.ModCapability.sanity.SanitySyncPacket;
 import level12345.level.block.ModBlocks;
 import level12345.level.item.Moditems;
 import net.minecraft.client.Minecraft;
-
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
-
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -42,43 +36,24 @@ public class Level {
 
     public Level(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
-
         //region ModEventBus
-        // Register the commonSetup method for mod loading
-        modEventBus.addListener(this::commonSetup);
         ModBlocks.register(modEventBus);
         Moditems.register(modEventBus);
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
+        ModCapabilities.register(modEventBus);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         //end region
-
+        // 注册通用初始化方法
+        modEventBus.addListener(this::commonSetup);
+        // 注册自身到 Forge 事件总线（处理服务器启动等）
+        MinecraftForge.EVENT_BUS.register(this);
         //触发类加载，虽然不知道是否真的需要
-        ModCapabilities.class.toString();
         SanityEventHandler.class.toString();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
-        if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        LOGGER.info("Level mod common setup completed.");
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
-    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent

@@ -1,6 +1,5 @@
 package level12345.level.ModCapability.sanity;
-
-
+//理智值的游戏相关逻辑在此处
 import level12345.level.Level;
 import level12345.level.ModCapability.ModCapabilities;
 import net.minecraft.nbt.CompoundTag;
@@ -8,9 +7,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = Level.MOD_ID)
 public class SanityEventHandler {
@@ -20,7 +21,7 @@ public class SanityEventHandler {
     public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
             // 如果你有多个能力，确保 ID 是唯一的！
-            event.addCapability(ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "sanity"), new SanityProvider());
+            event.addCapability(ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "sanity"), new SanityProvider((Player) event.getObject()));
             Level.LOGGER.debug("Sanity capability attached to player.");
         }
     }
@@ -39,4 +40,16 @@ public class SanityEventHandler {
             });
         });
     }
+
+    // 受伤时扣除理智
+    @SubscribeEvent
+    public static void onPlayerHurt(@NotNull LivingHurtEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            player.getCapability(ModCapabilities.PLAYER_SANITY).ifPresent(sanity -> {
+                // 受伤扣除 5 点理智
+                sanity.addSanity(-5);
+            });
+        }
+    }
+
 }

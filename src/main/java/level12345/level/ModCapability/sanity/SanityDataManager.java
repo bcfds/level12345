@@ -6,6 +6,11 @@ public class SanityDataManager implements ISanity {
     // 定义理智值的最大值
     public static final int MAX_SANITY = 100;
     private int sanityValue = MAX_SANITY;
+    public  Runnable onChanged;
+
+    public void setOnChanged(Runnable onChanged) {
+        this.onChanged = onChanged;
+    }
 
     @Override
     public int getSanity() {
@@ -14,9 +19,11 @@ public class SanityDataManager implements ISanity {
 
     @Override
     public void setSanity(int value) {
-        sanityValue = Math.max(0, Math.min(value, MAX_SANITY)); // 限制在0-MAX之间
-        // TODO: 在网络代码完成后，在这里调用同步方法
-        // syncToClient();
+        int old = this.sanityValue;
+        this.sanityValue = Math.max(0, Math.min(value, MAX_SANITY));
+        if (old != this.sanityValue && onChanged != null) {
+            onChanged.run();   // 当值真正变化时，执行回调
+        }
     }
 
     @Override
