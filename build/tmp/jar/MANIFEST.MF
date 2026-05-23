@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Specification-Title: level
+Specification-Vendor: 
+Specification-Version: 1
+Implementation-Title: level12345
+Implementation-Version: 1.0.0
+Implementation-Vendor: 
+Implementation-Timestamp: 2026-05-22T21:07:00+0800
+MixinConfigs: level.mixins.json
+

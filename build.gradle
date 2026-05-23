@@ -48,7 +48,7 @@ minecraft {
     // When true, this property will have all Eclipse/IntelliJ IDEA run configurations run the "prepareX" task for the given run configuration before launching the game.
     // In most cases, it is not necessary to enable.
     // enableEclipsePrepareRuns = true
-    // enableIdeaPrepareRuns = true
+     enableIdeaPrepareRuns = true
 
     // This property allows configuring Gradle's ProcessResources task(s) to run on IDE output locations before launching the game.
     // It is REQUIRED to be set to true for this template to function.
@@ -74,7 +74,7 @@ minecraft {
         // applies to all the run configs below
         configureEach {
             workingDirectory project.file('run')
-            environment 'assets_root', file('E:\\ARIS\\Minecraft\\.minecraft\\versions\\1.20.1\\1.20.1\\assets').absolutePath
+
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
             // "SCAN": For mods scan.
@@ -94,9 +94,9 @@ minecraft {
                 }
             }
         }
-
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            jvmArg "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED"
             property 'forge.enabledGameTestNamespaces', mod_id
         }
 
@@ -206,33 +206,7 @@ tasks.named('jar', Jar).configure {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
-gradle.projectsEvaluated {
 
-    def removeDep = { Task t, String depName ->
-        if (t == null) return
-        t.dependsOn.removeAll { dep ->
-            (dep instanceof Task && dep.name.equalsIgnoreCase(depName)) ||
-                    (dep instanceof String && dep.equalsIgnoreCase(depName))
-        }
-    }
-
-    def killDownloadAssetsFor = { String taskName ->
-        def t = tasks.findByName(taskName)
-        removeDep(t, "downloadAssets")
-    }
-
-    [
-            "prepareRuns",
-            "prepareRunClient",
-            "prepareRunClientCompile",
-            "prepareRunServer",
-            "prepareRunData",
-            "prepareRunDataCompile"
-    ].each { killDownloadAssetsFor(it) }
-
-    ["runClient", "runData", "runServer", "rundata", "runclient", "runserver"].each { killDownloadAssetsFor(it) }
-}
-
-tasks.matching { it.name.equalsIgnoreCase("downloadAssets") }.configureEach {
-    enabled = false
+tasks.withType(JavaExec).configureEach {
+    jvmArgs += ['--add-opens java.base/java.lang.invoke=ALL-UNNAMED']
 }
