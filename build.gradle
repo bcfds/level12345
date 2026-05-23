@@ -93,7 +93,6 @@ minecraft {
                 }
             }
         }
-
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             jvmArg "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED"
