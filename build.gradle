@@ -48,7 +48,7 @@ minecraft {
     // When true, this property will have all Eclipse/IntelliJ IDEA run configurations run the "prepareX" task for the given run configuration before launching the game.
     // In most cases, it is not necessary to enable.
     // enableEclipsePrepareRuns = true
-    // enableIdeaPrepareRuns = true
+     enableIdeaPrepareRuns = true
 
     // This property allows configuring Gradle's ProcessResources task(s) to run on IDE output locations before launching the game.
     // It is REQUIRED to be set to true for this template to function.
@@ -94,9 +94,9 @@ minecraft {
                 }
             }
         }
-
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            jvmArg "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED"
             property 'forge.enabledGameTestNamespaces', mod_id
         }
 
@@ -205,4 +205,8 @@ tasks.named('jar', Jar).configure {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+tasks.withType(JavaExec).configureEach {
+    jvmArgs += ['--add-opens java.base/java.lang.invoke=ALL-UNNAMED']
 }
