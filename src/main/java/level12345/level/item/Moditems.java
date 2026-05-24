@@ -18,8 +18,8 @@ import java.util.function.Supplier;
 public class Moditems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Level.MOD_ID);
-    public static final RegistryObject<Item> huo_yan = ITEMS.register("huo_yan", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> bottle_light = ITEMS.register("bottle_light", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> fire_salt = ITEMS.register("fire_salt", () -> new fire_saltItem(new Item.Properties()));
+    public static final RegistryObject<Item> bottle_light = ITEMS.register("bottle_light", () -> new bottle_lightItem(new Item.Properties()));
     public static final RegistryObject<CrossbowItem> CROSSGUN = ITEMS.register("crossgun", ()->new CrossbowItem((new Item.Properties()).stacksTo(111).durability(0)));
 
 //    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

@@ -6,6 +6,7 @@ import level12345.level.ModCapability.sanity.SanityEventHandler;
 import level12345.level.ModCapability.sanity.SanityRender;
 import level12345.level.ModCapability.sanity.SanitySyncPacket;
 import level12345.level.block.ModBlocks;
+import level12345.level.entity.ModEntities;
 import level12345.level.item.Moditems;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
@@ -40,6 +41,7 @@ public class Level {
         ModBlocks.register(modEventBus);
         Moditems.register(modEventBus);
         ModCapabilities.register(modEventBus);
+        ModEntities.ENTITY_TYPES.register(modEventBus);
 
         //end region
         // 注册通用初始化方法

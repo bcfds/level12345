@@ -54,8 +54,8 @@ public class ModDimensions {
     public static void bootstraptype(BootstapContext<DimensionType> context){
         context.register(KAUPENDIM_DIM_TYPE, new DimensionType(
                 OptionalLong.of(12000),
-                false,
-                false,
+                true,
+                true,
                 false,
                 false,
                 1.0,
