@@ -1,13 +1,13 @@
 package level12345.level;
 
 import com.mojang.logging.LogUtils;
-import level12345.level.ModCapability.ModCapabilities;
-import level12345.level.ModCapability.sanity.SanityEventHandler;
-import level12345.level.ModCapability.sanity.SanityRender;
-import level12345.level.ModCapability.sanity.SanitySyncPacket;
-import level12345.level.block.ModBlocks;
-import level12345.level.entity.ModEntities;
-import level12345.level.item.Moditems;
+import level12345.level.Capability.ModCapabilities;
+import level12345.level.Capability.sanity.SanityEventHandler;
+import level12345.level.Capability.sanity.client.SanityRender;
+import level12345.level.Capability.sanity.SanitySyncPacket;
+import level12345.level.Block.ModBlocks;
+import level12345.level.Entity.ModEntities;
+import level12345.level.Item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,7 +39,7 @@ public class Level {
         IEventBus modEventBus = context.getModEventBus();
         //region ModEventBus
         ModBlocks.register(modEventBus);
-        Moditems.register(modEventBus);
+        ModItems.register(modEventBus);
         ModCapabilities.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
 
