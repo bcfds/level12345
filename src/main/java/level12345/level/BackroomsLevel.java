@@ -10,6 +10,8 @@ import level12345.level.CreativeModeTabs.ModCreativeModeTabs;
 import level12345.level.Entity.ModEntities;
 import level12345.level.Item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +24,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+
+import static level12345.level.Item.ModItems.*;
+
+//TODO 注意看一下IDEA报的“未使用”变量或者方法，检查下是不是真的没有用，不要做超前的冗余设计
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(BackroomsLevel.MOD_ID)
@@ -55,6 +62,15 @@ public class BackroomsLevel {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        //AutoReg的一部分，用于智能化添加
+        //TODO 就这样硬编码的判断类型，早晚会给玩家的机器塞到建筑组工具，总是要改的，而且绝对有优化空间
+        for (RegistryObject<Item> regObj : CREATIVETAB_SUPPLIER) {
+            if (regObj.get() instanceof BlockItem) {
+                BLOCKITEMS_CREATIVETAB_SUPPLIER.add(regObj);
+            } else {
+                ITEMS_CREATIVETAB_SUPPLIER.add(regObj);
+            }
+        }
         LOGGER.info("BackroomsLevel mod common setup completed.");
     }
 

@@ -17,6 +17,7 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class Firesalt extends ThrowableItemProjectile {
+    //TODO 火盐粒子要大改，尊重原著
     public Firesalt(EntityType<? extends Firesalt> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
