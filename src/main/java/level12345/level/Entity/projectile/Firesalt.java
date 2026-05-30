@@ -58,7 +58,7 @@ public class Firesalt extends ThrowableItemProjectile {
     protected void onHitEntity(@NotNull EntityHitResult pResult) {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
-        float damageAmount = 3.0F;
+        float damageAmount = 2.0F;
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), damageAmount);
     }
 
@@ -69,7 +69,7 @@ public class Firesalt extends ThrowableItemProjectile {
         super.onHit(pResult);
         if (!this.level().isClientSide) {
             this.level().explode(this, this.getX(), this.getY(), this.getZ(),
-                    2.0F, true, Level.ExplosionInteraction.BLOCK);
+                    1.0F, true, Level.ExplosionInteraction.BLOCK);
             this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }

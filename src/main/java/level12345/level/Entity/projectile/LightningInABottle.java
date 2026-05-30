@@ -44,7 +44,7 @@ public class LightningInABottle extends ThrowableItemProjectile {
     protected void onHitEntity(@NotNull EntityHitResult pResult) {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
-        float damageAmount = 50.0F;
+        float damageAmount = 150.0F;
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), damageAmount );
     }
 
@@ -59,7 +59,7 @@ public class LightningInABottle extends ThrowableItemProjectile {
                             e -> e != this.getOwner() && e.isAlive())
                     .forEach(entity -> {
                         double distance = entity.distanceTo(this);
-                        float damage = (float) (50.0 * (1.0 - distance / 5.0));
+                        float damage = (float) (150.0 * (1.0 - distance / 10.0));
                         if (damage < 1.0F) damage = 1.0F;
                         entity.hurt(this.damageSources().magic(), damage);
                     });
