@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = BackroomsLevel.MOD_ID)
 public class SanityEventHandler {
+    //TODO 谁来写下这个理智的游戏行为，只要监听事件然后处理逻辑就好了
 
     // 为玩家附加能力
     @SubscribeEvent
