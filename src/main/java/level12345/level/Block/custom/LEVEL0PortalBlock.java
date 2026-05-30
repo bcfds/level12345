@@ -1,5 +1,6 @@
 package level12345.level.Block.custom;
 
+import level12345.level.WorldGen.dimensions.ModDimensions;
 import level12345.level.WorldGen.portal.ModTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
@@ -17,17 +18,17 @@ import org.jetbrains.annotations.NotNull;
 public class LEVEL0PortalBlock extends Block {
     public LEVEL0PortalBlock(BlockBehaviour.Properties pProperties){super(pProperties);}
     @Override
-    public @NotNull InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public @NotNull InteractionResult use(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
         if (pPlayer.canChangeDimensions()) {
             if (!pLevel.isClientSide) {
-                handleLevel2Portal(pPlayer, pPos);
+                handleLevel0Portal(pPlayer, pPos);
             }
             return InteractionResult.SUCCESS;
         } else {
             return InteractionResult.CONSUME;
         }
     }
-    private void handleLevel2Portal(Player player, BlockPos pPos) {
+    private void handleLevel0Portal(Player player, BlockPos pPos) {
         if (player.level() instanceof ServerLevel serverLevel) {
             MinecraftServer minecraftServer = serverLevel.getServer();
             boolean isInCustomDim = minecraftServer.levelKeys().equals(Level.OVERWORLD);

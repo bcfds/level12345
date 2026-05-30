@@ -1,6 +1,6 @@
 package level12345.level.Entity;
 
-import level12345.level.Level;
+import level12345.level.BackroomsLevel;
 import level12345.level.Entity.projectile.Firesalt;
 import level12345.level.Entity.projectile.LightningInABottle;
 import net.minecraft.world.entity.EntityType;
@@ -12,20 +12,20 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModEntities{
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Level.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, BackroomsLevel.MOD_ID);
     public static void register(IEventBus eventBus){
         ENTITY_TYPES.register(eventBus);
     }
     public static final RegistryObject<EntityType<LightningInABottle>> LIGHTNING_IN_A_BOTTLE =
-            ENTITY_TYPES.register("LIGHTNING_IN_A_BOTTLE", () -> EntityType.Builder.<LightningInABottle>of(
+            ENTITY_TYPES.register("lightning_in_a_bottle", () -> EntityType.Builder.<LightningInABottle>of(
                             LightningInABottle::new, MobCategory.MISC)
                     .sized(0.25f, 0.25f)
                     .clientTrackingRange(64)
-                    .build("LIGHTNING_IN_A_BOTTLE"));
+                    .build("lightning_in_a_bottle"));
     public static final RegistryObject<EntityType<Firesalt>> FIRESALT =
-            ENTITY_TYPES.register("FiresaltItem", () -> EntityType.Builder.<Firesalt>of(
+            ENTITY_TYPES.register("fire_salt", () -> EntityType.Builder.<Firesalt>of(
                             Firesalt::new, MobCategory.MISC)
                     .sized(0.25f, 0.25f)
                     .clientTrackingRange(64)
-                    .build("FiresaltItem"));
+                    .build("fire_salt"));
 }

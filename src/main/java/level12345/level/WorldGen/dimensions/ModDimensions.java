@@ -1,7 +1,7 @@
 package level12345.level.WorldGen.dimensions;
 
 import com.mojang.datafixers.util.Pair;
-import level12345.level.Level;
+import level12345.level.BackroomsLevel;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -19,38 +19,55 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
 import java.util.List;
 import java.util.OptionalLong;
-
+//FIXME 意外的发现玩家在自定义维度退出游戏很慢，需要找出原因
 public class ModDimensions {
-    public static final ResourceKey<LevelStem> KAUPENDIM_KEY = ResourceKey.create(Registries.LEVEL_STEM,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "kaupendim"));
-    public static final ResourceKey<net.minecraft.world.level.Level> KAUPENDIM_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "kaupendim"));
-    public static final ResourceKey<DimensionType> KAUPENDIM_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "kaupendim_type"));
+    public static final ResourceKey<LevelStem> LEVEL1_KEY = ResourceKey.create(Registries.LEVEL_STEM,
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level1"));
+    public static final ResourceKey<net.minecraft.world.level.Level> LEVEL1_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level1"));
+    public static final ResourceKey<DimensionType> LEVLE1_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "levl1_type"));
     public static final ResourceKey<LevelStem> LEVEL3_KEY = ResourceKey.create(Registries.LEVEL_STEM,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level3"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level3"));
     public static final ResourceKey<net.minecraft.world.level.Level> LEVEL3_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level3"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level3"));
     public static final ResourceKey<DimensionType> LEVEL3_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level3_type"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level3_type"));
     public static final ResourceKey<LevelStem> LEVEL8_KEY = ResourceKey.create(Registries.LEVEL_STEM,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level8"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level8"));
     public static final ResourceKey<net.minecraft.world.level.Level> LEVEL8_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level8"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level8"));
     public static final ResourceKey<DimensionType> LEVEL8_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level8_type"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level8_type"));
     public static final ResourceKey<LevelStem> LEVEL2_KEY = ResourceKey.create(Registries.LEVEL_STEM,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level2"));
     public static final ResourceKey<net.minecraft.world.level.Level> LEVEL2_LEVEL_KEY = ResourceKey.create(Registries.DIMENSION,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level2"));
     public static final ResourceKey<DimensionType> LEVEL2_DIM_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE,
-            ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "level2_type"));
+            ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level2_type"));
 
     public static void bootstraptype(BootstapContext<DimensionType> context){
-        context.register(KAUPENDIM_DIM_TYPE, new DimensionType(
+        context.register(LEVLE1_DIM_TYPE, new DimensionType(
                 OptionalLong.of(12000),
                 true,
                 true,
+                false,
+                false,
+                1.0,
+                true,
+                false,
+                0,
+                256,
+                256,
+                BlockTags.INFINIBURN_OVERWORLD,
+                BuiltinDimensionTypes.OVERWORLD_EFFECTS,
+                1.0f,
+                new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
+        ));
+        context.register(LEVEL2_DIM_TYPE, new DimensionType(
+                OptionalLong.of(12000),
+                false,
+                false,
                 false,
                 false,
                 1.0,
@@ -98,23 +115,6 @@ public class ModDimensions {
                 1.0f,
                 new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
         ));
-        context.register(LEVEL2_DIM_TYPE, new DimensionType(
-                OptionalLong.of(12000),
-                false,
-                false,
-                false,
-                false,
-                1.0,
-                true,
-                false,
-                0,
-                256,
-                256,
-                BlockTags.INFINIBURN_OVERWORLD,
-                BuiltinDimensionTypes.OVERWORLD_EFFECTS,
-                1.0f,
-                new DimensionType.MonsterSettings(false,false, ConstantInt.of(0),0)
-        ));
     }
 
     public static void bootstrapStem(BootstapContext<LevelStem> context){
@@ -134,8 +134,8 @@ public class ModDimensions {
                         ))),
                 noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));
 
-        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.KAUPENDIM_DIM_TYPE), noiseBasedChunkGenerator);
+        LevelStem stem = new LevelStem(dimTypes.getOrThrow(ModDimensions.LEVLE1_DIM_TYPE), noiseBasedChunkGenerator);
 
-        Holder.Reference<LevelStem> register = context.register(KAUPENDIM_KEY, stem);
+        Holder.Reference<LevelStem> register = context.register(LEVEL1_KEY, stem);
     }
 }

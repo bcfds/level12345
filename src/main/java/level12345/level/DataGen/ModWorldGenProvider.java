@@ -1,6 +1,6 @@
 package level12345.level.DataGen;
 
-import level12345.level.Level;
+import level12345.level.BackroomsLevel;
 import level12345.level.WorldGen.dimensions.ModDimensions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -20,7 +20,7 @@ public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.LEVEL_STEM, ModDimensions::bootstrapStem);
 
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries){
-        super(output,registries,BUILDER, Set.of(Level.MOD_ID));
+        super(output,registries,BUILDER, Set.of(BackroomsLevel.MOD_ID));
     }
     @Override
     public String getName() {

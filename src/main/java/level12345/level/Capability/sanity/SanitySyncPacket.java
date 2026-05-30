@@ -1,6 +1,6 @@
 package level12345.level.Capability.sanity;
 //网络同步
-import level12345.level.Level;
+import level12345.level.BackroomsLevel;
 import level12345.level.Capability.ModCapabilities;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
@@ -41,7 +41,7 @@ public class SanitySyncPacket {
                 if (player != null) {
                     player.getCapability(ModCapabilities.PLAYER_SANITY).ifPresent(sanity -> {
                         sanity.setSanity(msg.sanity);
-                        Level.LOGGER.debug("Client sanity updated to: {}", msg.sanity);
+                        BackroomsLevel.LOGGER.debug("Client sanity updated to: {}", msg.sanity);
                     });
                 }
             }

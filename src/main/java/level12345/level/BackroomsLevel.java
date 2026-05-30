@@ -6,6 +6,7 @@ import level12345.level.Capability.sanity.SanityEventHandler;
 import level12345.level.Capability.sanity.client.SanityRender;
 import level12345.level.Capability.sanity.SanitySyncPacket;
 import level12345.level.Block.ModBlocks;
+import level12345.level.CreativeModeTabs.ModCreativeModeTabs;
 import level12345.level.Entity.ModEntities;
 import level12345.level.Item.ModItems;
 import net.minecraft.client.Minecraft;
@@ -24,8 +25,8 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Level.MOD_ID)
-public class Level {
+@Mod(BackroomsLevel.MOD_ID)
+public class BackroomsLevel {
     /**
      * ⚠️  The two lines below must not be changed.They define entrypoint!
      */
@@ -35,13 +36,14 @@ public class Level {
     public static final Logger LOGGER = LogUtils.getLogger();
 
 
-    public Level(FMLJavaModLoadingContext context) {
+    public BackroomsLevel(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
         //region ModEventBus
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModCapabilities.register(modEventBus);
-        ModEntities.ENTITY_TYPES.register(modEventBus);
+        ModEntities.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
 
         //end region
         // 注册通用初始化方法
@@ -53,7 +55,7 @@ public class Level {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("Level mod common setup completed.");
+        LOGGER.info("BackroomsLevel mod common setup completed.");
     }
 
 
@@ -75,7 +77,7 @@ public class Level {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
             // 确保 SanityRender 类被加载，以触发其 @EventBusSubscriber
             SanityRender.class.toString();
-            Level.LOGGER.info("SanityRender registered for client.");
+            BackroomsLevel.LOGGER.info("SanityRender registered for client.");
         }
     }
 
@@ -90,6 +92,6 @@ public class Level {
     static {
         int packetId = 0;
         NETWORK.registerMessage(packetId++, SanitySyncPacket.class, SanitySyncPacket::encode, SanitySyncPacket::decode, SanitySyncPacket::handle);
-        Level.LOGGER.info("Sanity sync packet registered with ID: {}", packetId - 1);
+        BackroomsLevel.LOGGER.info("Sanity sync packet registered with ID: {}", packetId - 1);
     }
 }

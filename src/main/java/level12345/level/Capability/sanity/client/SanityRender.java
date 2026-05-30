@@ -1,7 +1,7 @@
 //TODO FINISH THIS
 package level12345.level.Capability.sanity.client;
 
-import level12345.level.Level;
+import level12345.level.BackroomsLevel;
 import level12345.level.Capability.ModCapabilities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
@@ -10,7 +10,7 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = Level.MOD_ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = BackroomsLevel.MOD_ID, value = Dist.CLIENT)
 public class SanityRender {
 
     // 使用 RenderGuiEvent 监听游戏界面渲染

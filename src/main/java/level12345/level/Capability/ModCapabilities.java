@@ -11,8 +11,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 
 public class ModCapabilities {
-    // 创建一个能力注册器。
-    // 第一个参数指定注册类型，第二个参数指定本模组的 MOD ID。
     public static final Capability<ISanity> PLAYER_SANITY = CapabilityManager.get(new CapabilityToken<>() {});
 
 

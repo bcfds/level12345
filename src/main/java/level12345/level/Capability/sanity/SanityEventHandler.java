@@ -1,6 +1,6 @@
 package level12345.level.Capability.sanity;
 //理智值的游戏相关逻辑在此处
-import level12345.level.Level;
+import level12345.level.BackroomsLevel;
 import level12345.level.Capability.ModCapabilities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
-@Mod.EventBusSubscriber(modid = Level.MOD_ID)
+@Mod.EventBusSubscriber(modid = BackroomsLevel.MOD_ID)
 public class SanityEventHandler {
 
     // 为玩家附加能力
@@ -21,8 +21,8 @@ public class SanityEventHandler {
     public static void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
             // 如果你有多个能力，确保 ID 是唯一的！
-            event.addCapability(ResourceLocation.fromNamespaceAndPath(Level.MOD_ID, "sanity"), new SanityProvider((Player) event.getObject()));
-            Level.LOGGER.debug("Sanity capability attached to player.");
+            event.addCapability(ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "sanity"), new SanityProvider((Player) event.getObject()));
+            BackroomsLevel.LOGGER.debug("Sanity capability attached to player.");
         }
     }
 
@@ -36,7 +36,7 @@ public class SanityEventHandler {
             event.getEntity().getCapability(ModCapabilities.PLAYER_SANITY).ifPresent(newSan -> {
                 CompoundTag data = oldSan.serializeNBT();
                 newSan.deserializeNBT(data);
-                Level.LOGGER.debug("Sanity data cloned for player.");
+                BackroomsLevel.LOGGER.debug("Sanity data cloned for player.");
             });
         });
     }

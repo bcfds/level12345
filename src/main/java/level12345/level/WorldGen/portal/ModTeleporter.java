@@ -1,7 +1,7 @@
 package level12345.level.WorldGen.portal;
 
 import level12345.level.Block.ModBlocks;
-import level12345.level.Block.custom.ModPortalBlock;
+import level12345.level.Block.custom.LEVLE1PortalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -43,13 +43,13 @@ public class ModTeleporter implements ITeleporter {
             boolean doSetBlock = true;
             for (BlockPos checkPos:BlockPos.betweenClosed(destinationPos.below(10).west(10),
                     destinationPos.above(10).east(10))) {
-                if (destinationWorld.getBlockState(checkPos).getBlock() instanceof ModPortalBlock){
+                if (destinationWorld.getBlockState(checkPos).getBlock() instanceof LEVLE1PortalBlock){
                     doSetBlock = false;
                     break;
                 }
             }
             if (doSetBlock){
-                destinationWorld.setBlock(destinationPos, ModBlocks.MOD_PORTAL.get().defaultBlockState(),3);
+                destinationWorld.setBlock(destinationPos, ModBlocks.LEVEL1_PORTAL.get().defaultBlockState(),3);
             }
         }
         return entity;

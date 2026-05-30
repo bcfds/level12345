@@ -1,6 +1,6 @@
 package level12345.level.Capability.sanity;
 
-import level12345.level.Level;
+import level12345.level.BackroomsLevel;
 import level12345.level.Capability.ModCapabilities;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -22,7 +22,7 @@ public class SanityProvider implements ICapabilityProvider, INBTSerializable<Com
         // 设置回调：当理智值变化时，向客户端发送同步包
         dataManager.setOnChanged(() -> {
             if (!player.level().isClientSide) {
-                Level.NETWORK.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player),
+                BackroomsLevel.NETWORK.send(PacketDistributor.PLAYER.with(() -> (ServerPlayer) player),
                         new SanitySyncPacket(player.getId(), dataManager.getSanity()));
             }
         });

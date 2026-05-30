@@ -11,7 +11,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -31,7 +30,7 @@ public class Firesalt extends ThrowableItemProjectile {
     }
 
     protected @NotNull Item getDefaultItem() {
-        return ModItems.Firesalt.get();
+        return ModItems.FIRESALT.get();
     }
 
     private ParticleOptions getParticle() {

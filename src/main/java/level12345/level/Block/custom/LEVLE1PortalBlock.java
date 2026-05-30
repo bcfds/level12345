@@ -15,8 +15,8 @@ import level12345.level.WorldGen.portal.ModTeleporter;
 import level12345.level.WorldGen.dimensions.ModDimensions;
 import net.minecraft.resources.ResourceKey;
 
-public class ModPortalBlock extends Block {
-    public ModPortalBlock(BlockBehaviour.Properties pProperties){
+public class LEVLE1PortalBlock extends Block {
+    public LEVLE1PortalBlock(BlockBehaviour.Properties pProperties){
         super(pProperties);
     }
 
@@ -35,14 +35,14 @@ public class ModPortalBlock extends Block {
     private void handleKaupenPortal(Player player, BlockPos pPos) {
         if (player.level() instanceof ServerLevel serverLevel) {
             MinecraftServer minecraftServer = serverLevel.getServer();
-            boolean isInCustomDim = minecraftServer.levelKeys().equals(ModDimensions.KAUPENDIM_LEVEL_KEY);
-            ResourceKey<Level> resourcekey = player.level().dimension() == ModDimensions.KAUPENDIM_LEVEL_KEY ?
-                    Level.OVERWORLD : ModDimensions.KAUPENDIM_LEVEL_KEY;
+            boolean isInCustomDim = minecraftServer.levelKeys().equals(ModDimensions.LEVEL1_LEVEL_KEY);
+            ResourceKey<Level> resourcekey = player.level().dimension() == ModDimensions.LEVEL1_LEVEL_KEY ?
+                    Level.OVERWORLD : ModDimensions.LEVEL1_LEVEL_KEY;
 
-            ServerLevel portalDimension = minecraftServer.getLevel(ModDimensions.KAUPENDIM_LEVEL_KEY);
+            ServerLevel portalDimension = minecraftServer.getLevel(ModDimensions.LEVEL1_LEVEL_KEY);
 
             if (portalDimension != null && !player.isPassenger()) {
-                if(resourcekey == ModDimensions.KAUPENDIM_LEVEL_KEY){
+                if(resourcekey == ModDimensions.LEVEL1_LEVEL_KEY){
                     player.changeDimension(portalDimension, new ModTeleporter(pPos, true));
                 } else{
                     player.changeDimension(portalDimension, new ModTeleporter(pPos, true));

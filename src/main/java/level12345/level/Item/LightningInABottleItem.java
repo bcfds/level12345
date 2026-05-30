@@ -19,10 +19,10 @@ public class LightningInABottleItem extends Item{
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!pLevel.isClientSide) {
-            level12345.level.Entity.projectile.LightningInABottle bottle_light = new level12345.level.Entity.projectile.LightningInABottle(pLevel, pPlayer);
-            bottle_light.setItem(itemstack);
-            bottle_light.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
-            pLevel.addFreshEntity(bottle_light);
+            level12345.level.Entity.projectile.LightningInABottle lightningInABottle = new level12345.level.Entity.projectile.LightningInABottle(pLevel, pPlayer);
+            lightningInABottle.setItem(itemstack);
+            lightningInABottle.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.5F, 1.0F);
+            pLevel.addFreshEntity(lightningInABottle);
         }
 
         pPlayer.awardStat(Stats.ITEM_USED.get(this));

@@ -36,14 +36,6 @@ public class LightningInABottle extends ThrowableItemProjectile {
      * Handles an Entity event received from a {@link net.minecraft.network.protocol.game.ClientboundEntityEventPacket}.
      */
     public void handleEntityEvent(byte pId) {
-//        if (pId == 3) {
-//            ParticleOptions particleoptions = this.getParticle();
-
-//            for(int i = 0; i < 8; ++i) {
-//                this.level().addParticle(particleoptions, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
-//            }
-//        }
-
     }
 
     /**
@@ -80,9 +72,6 @@ public class LightningInABottle extends ThrowableItemProjectile {
             // 发送客户端事件（但 handleEntityEvent 已为空，所以无任何视觉效果）
         this.level().broadcastEntityEvent(this, (byte)3);
         this.discard();
-//            this.level().explode(null, this.getX(), this.getY(), this.getZ(), 5.0F, Level.ExplosionInteraction.NONE);
-//            this.level().broadcastEntityEvent(this, (byte)3);
-//            this.discard();
     }
 
 }
