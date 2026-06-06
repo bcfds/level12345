@@ -1,15 +1,14 @@
 {
   "type": "minecraft:jigsaw",
-  "biomes": "#minecraft:is_plains",
+  "biomes": "#minecraft:is_overworld",
   "step": "surface_structures",
   "spawn_overrides": {},
   "terrain_adaptation": "none",
   "start_pool": "level:test4/start_pool",
-  "size": 7,
+  "size": 1,
   "start_height": {
-    "absolute": 1
+    "absolute": 10
   },
-  "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "max_distance_from_center": 80,
+  "max_distance_from_center": 10,
   "use_expansion_hack": false
 }
