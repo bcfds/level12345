@@ -19,7 +19,6 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 
 import java.util.List;
 import java.util.OptionalLong;
-//FIXME 意外的发现玩家在自定义维度退出游戏很慢，需要找出原因
 public class ModDimensions {
     public static final ResourceKey<LevelStem> LEVEL1_KEY = ResourceKey.create(Registries.LEVEL_STEM,
             ResourceLocation.fromNamespaceAndPath(BackroomsLevel.MOD_ID, "level1"));
