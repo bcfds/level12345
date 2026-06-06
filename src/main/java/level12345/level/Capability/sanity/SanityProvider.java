@@ -13,7 +13,7 @@ import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
 public class SanityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    private final ISanity sanityData;
+    private final ISanity sanity;
     private final LazyOptional<ISanity> optional;
 
     // 构造函数接收 Player 参数，用于网络同步回调
@@ -26,8 +26,8 @@ public class SanityProvider implements ICapabilityProvider, INBTSerializable<Com
                         new SanitySyncPacket(player.getId(), dataManager.getSanity()));
             }
         });
-        this.sanityData = dataManager;
-        this.optional = LazyOptional.of(() -> sanityData);
+        this.sanity = dataManager;
+        this.optional = LazyOptional.of(() -> sanity);
     }
 
     @Override
@@ -37,11 +37,11 @@ public class SanityProvider implements ICapabilityProvider, INBTSerializable<Com
 
     @Override
     public CompoundTag serializeNBT() {
-        return sanityData.serializeNBT();
+        return sanity.serializeNBT();
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        sanityData.deserializeNBT(nbt);
+        sanity.deserializeNBT(nbt);
     }
 }

@@ -6,7 +6,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -33,7 +32,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> FIRESALT = AtuoRegister("fire_salt", () -> new FiresaltItem(new Item.Properties()));
     public static final RegistryObject<Item> LIGHTNING_IN_A_BOTTLE = AtuoRegister("lightning_in_a_bottle", () -> new LightningInABottleItem(new Item.Properties()));
-
+    public static final RegistryObject<Item> WarpBerriesItem = AtuoRegister("warp_berries",() -> new WarpBerriesItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
