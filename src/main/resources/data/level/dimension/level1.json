@@ -12,7 +12,7 @@
       "biome": "minecraft:plains",
       "features": false,
       "lakes": false,
-      "structure_overrides": []
+      "structure_overrides": ["level:test4"]
     }
   }
 }
