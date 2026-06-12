@@ -7,8 +7,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.util.ITeleporter;
+import net.minecraft.world.entity.Entity;
 
-import javax.swing.text.html.parser.Entity;
+//import javax.swing.text.html.parser.Entity;
 import java.util.function.Function;
 
 public class ModTeleporter implements ITeleporter {
