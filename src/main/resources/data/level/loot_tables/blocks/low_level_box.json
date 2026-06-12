@@ -7,8 +7,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:diamond",
-          "weight": 5
+          "name": "level:lightning_in_a_bottle",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "level:fire_salt",
+          "weight": 10
         },
         {
           "type": "minecraft:item",

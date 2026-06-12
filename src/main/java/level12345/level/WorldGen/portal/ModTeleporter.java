@@ -1,4 +1,4 @@
-package level12345.level.WorldGen.portal;
+package level12345.level.worldgen.portal;
 
 import level12345.level.Block.ModBlocks;
 import level12345.level.Block.custom.LEVLE1PortalBlock;

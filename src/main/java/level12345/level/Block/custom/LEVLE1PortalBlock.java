@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import level12345.level.WorldGen.portal.ModTeleporter;
+import level12345.level.worldgen.portal.ModTeleporter;
 import level12345.level.WorldGen.dimensions.ModDimensions;
 import net.minecraft.resources.ResourceKey;
 
