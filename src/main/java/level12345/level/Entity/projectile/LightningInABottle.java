@@ -16,6 +16,7 @@ import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class LightningInABottle extends ThrowableItemProjectile {
+    //TODO 瓶装闪电粒子要大改，尊重原著，而且闪电不止一种，命名空间也许需要调整
     public LightningInABottle(EntityType<? extends LightningInABottle> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
