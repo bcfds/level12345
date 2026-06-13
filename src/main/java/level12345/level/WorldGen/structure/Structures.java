@@ -1,4 +1,4 @@
-package level12345.level.worldgen.structure;
+package level12345.level.WorldGen.structure;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;

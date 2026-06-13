@@ -1,8 +1,7 @@
 package level12345.level.Block.custom;
 
 import level12345.level.WorldGen.dimensions.ModDimensions;
-//import level12345.level.worldgen.portal.ModTeleporter;
-import level12345.level.ModTeleporter;
+import level12345.level.WorldGen.portal.ModTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
@@ -15,11 +14,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 
 public class LEVEL8PortalBlock extends Block {
     public LEVEL8PortalBlock(BlockBehaviour.Properties pProperties){super(pProperties);}
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public @NotNull InteractionResult use(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, Player pPlayer, @NotNull InteractionHand pHand, @NotNull BlockHitResult pHit) {
         if (pPlayer.canChangeDimensions()) {
             if (!pLevel.isClientSide) {
                 handleLevel8Portal(pPlayer, pPos);
