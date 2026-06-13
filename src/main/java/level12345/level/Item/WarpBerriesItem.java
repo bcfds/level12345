@@ -1,7 +1,8 @@
 package level12345.level.Item;
 
 import level12345.level.DataGen.DimensionVisit.DimensionVisitorData;
-import level12345.level.worldgen.portal.ModTeleporter;
+//import level12345.level.worldgen.portal.ModTeleporter;
+import level12345.level.ModTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;

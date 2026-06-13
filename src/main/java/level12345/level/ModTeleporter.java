@@ -1,25 +1,21 @@
-package level12345.level.worldgen.portal;
+package level12345.level;
 
 import level12345.level.Block.ModBlocks;
 import level12345.level.Block.custom.LEVLE1PortalBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.util.ITeleporter;
-import net.minecraft.world.entity.Entity;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.NotNull;
 
-//import javax.swing.text.html.parser.Entity;
 import java.util.function.Function;
 
 public class ModTeleporter implements ITeleporter {
     public static BlockPos thisPos = BlockPos.ZERO;
     public static boolean insideDimension = true;
 
-    public ModTeleporter(BlockPos pos,boolean insideDim){
+    public ModTeleporter(BlockPos pos, boolean insideDim){
         thisPos = pos;
         insideDimension = insideDim;
     }

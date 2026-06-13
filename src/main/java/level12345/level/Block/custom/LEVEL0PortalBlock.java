@@ -1,7 +1,8 @@
 package level12345.level.Block.custom;
 
 import level12345.level.WorldGen.dimensions.ModDimensions;
-import level12345.level.worldgen.portal.ModTeleporter;
+//import level12345.level.worldgen.portal.ModTeleporter;
+import level12345.level.ModTeleporter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
