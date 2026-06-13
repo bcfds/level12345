@@ -1,0 +1,13 @@
+{
+  "type": "level:level3_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:plains",
+      "layers": [],
+      "features": false,
+      "lakes": false,
+      "structure_overrides": []
+    }
+  }
+}
