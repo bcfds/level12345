@@ -3,12 +3,15 @@ package level12345.level.Entity;
 import level12345.level.BackroomsLevel;
 import level12345.level.Entity.projectile.Firesalt;
 import level12345.level.Entity.projectile.LightningInABottle;
+import level12345.level.Entity.projectile.bullet;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import static javax.swing.text.html.parser.DTDConstants.ENTITIES;
 
 public class ModEntities{
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -28,4 +31,11 @@ public class ModEntities{
                     .sized(0.25f, 0.25f)
                     .clientTrackingRange(64)
                     .build("fire_salt"));
+    public static final RegistryObject<EntityType<bullet>> bullet =
+            ENTITY_TYPES.register("bullet",
+                    () -> EntityType.Builder.<bullet>of(bullet::new, MobCategory.MISC)
+                            .sized(0.5F, 0.5F)
+                            .clientTrackingRange(4)
+                            .updateInterval(20)
+                            .build("bullet"));
 }

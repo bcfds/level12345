@@ -3,16 +3,11 @@
   "generator": {
     "type": "minecraft:flat",
     "settings": {
-      "layers": [
-        {
-          "block": "level:concrete_floor",
-          "height": 10
-        }
-      ],
-      "biome": "minecraft:plains",
+      "layers": [],
+      "biome": "level:l1_biome",
       "features": false,
       "lakes": false,
-      "structure_overrides": ["level:test4"]
+      "structure_overrides": ["level:test1","level:test4"]
     }
   }
 }

@@ -2,6 +2,9 @@ package level12345.level.Item;
 
 import level12345.level.BackroomsLevel;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -31,8 +34,12 @@ public class ModItems {
     }
 
     public static final RegistryObject<Item> FIRESALT = AtuoRegister("fire_salt", () -> new FiresaltItem(new Item.Properties()));
-    public static final RegistryObject<Item> LIGHTNING_IN_A_BOTTLE = AtuoRegister("lightning_in_a_bottle", () -> new LightningInABottleItem(new Item.Properties()));
+    public static final RegistryObject<Item> LIGHTNING_IN_A_BOTTLE = AtuoRegister("lightning_in_a_bottle", () -> new LightningInABottleItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> WarpBerriesItem = AtuoRegister("warp_berries",() -> new WarpBerriesItem(new Item.Properties()));
+    public static final RegistryObject<Item> crowbar = AtuoRegister("crowbar",() -> new Modtoolcrowbar(Tiers.WOOD,5,-2.8F,new Item.Properties().durability(256)));
+    public static final RegistryObject<Item> steel_sword = AtuoRegister("steel_sword",() -> new SwordItem(Tiers.NETHERITE,12,-2.4F,new Item.Properties().durability(352757)));
+    public static final RegistryObject<Item> BULLET = AtuoRegister("bullet", () -> new BulletItem(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> BOWB = AtuoRegister("bowb",()->new BowBItem(new Item.Properties().durability(128)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

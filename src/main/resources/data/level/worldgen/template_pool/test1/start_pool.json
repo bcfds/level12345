@@ -1,5 +1,5 @@
 {
-  "name": "level:test4/start_pool",
+  "name": "level:test1/start_pool",
   "fallback": "minecraft:empty",
   "elements": [
     {
@@ -7,7 +7,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "level:test4",
+        "location": "level:test1",
         "processors": "minecraft:empty",
         "rotation": "none"
       }

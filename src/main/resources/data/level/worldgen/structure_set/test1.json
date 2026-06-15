@@ -1,13 +1,13 @@
 {
   "structures": [{
-    "structure": "level:test4",
+    "structure": "level:test1",
     "weight": 1
   }],
   "placement": {
     "type": "minecraft:random_spread",
     "salt": 123456789,
-    "spacing": 12,
-    "separation": 10,
+    "spacing": 6,
+    "separation": 5,
     "spread_type": "linear"
   }
 }
