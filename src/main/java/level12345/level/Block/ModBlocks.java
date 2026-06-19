@@ -1,6 +1,7 @@
 package level12345.level.Block;
 
 import level12345.level.BackroomsLevel;
+import level12345.level.Block.Portal.*;
 import level12345.level.Block.custom.*;
 import level12345.level.Item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -57,10 +58,8 @@ public class ModBlocks {
             ()->new Block(BlockBehaviour.Properties.of().strength(3).explosionResistance(3600F)));
     public static final RegistryObject<Block> high_level_box = registerBlock("high_level_box",
             ()->new Block(BlockBehaviour.Properties.of().strength(5).explosionResistance(3600F)));
-    public static final RegistryObject<Block> light_tube_1 = registerBlock("light_tube_1",
-            ()->new Customblock(BlockBehaviour.Properties.of().strength(-1).lightLevel(state -> 15).explosionResistance(3600000F)));
-    public static final RegistryObject<Block> tube1 = registerBlock("tube1",
-            ()->new Block(BlockBehaviour.Properties.of().strength(-1).lightLevel(state -> 15).noOcclusion().explosionResistance(3600000F)));
+    public static final RegistryObject<Block> fluorescent_tube = registerBlock("fluorescent_tube",
+            ()->new FluorescentTube(BlockBehaviour.Properties.of().noOcclusion().strength(-1).lightLevel(state -> state.getValue(FluorescentTube.LIT) ? 15 : 0).explosionResistance(3600000F)));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
