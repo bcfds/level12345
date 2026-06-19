@@ -1,6 +1,7 @@
 package level12345.level.Entity.projectile;
 
 import level12345.level.Item.ModItems;
+import level12345.level.Item.Rifle;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,21 +15,24 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
 public class bullet extends AbstractArrow {
-    private final float baseDamage = 2.5F;
+    private final float baseDamage = 0.5F;
     public bullet(EntityType<? extends bullet> type, Level level) {
         super(type, level);
         this.pickup = AbstractArrow.Pickup.DISALLOWED;
         this.setInvisible(true);
+        this.setNoGravity(true);
     }
 
     public bullet(EntityType<? extends bullet> type, double x, double y, double z, Level level) {
         super(type, x, y, z, level);
+        this.setNoGravity(true);
     }
 
     public bullet(EntityType<? extends bullet> type, LivingEntity shooter, Level level) {
         super(type, shooter, level);
         this.pickup = AbstractArrow.Pickup.DISALLOWED;
         this.setInvisible(true);
+        this.setNoGravity(true);
     }
 
     @Override
@@ -59,7 +63,14 @@ public class bullet extends AbstractArrow {
 
     @Override
     public double getBaseDamage() {
-        return this.baseDamage;
+        double damage = 1.25F;
+        if (this.getOwner() instanceof LivingEntity owner) {
+            ItemStack held = owner.getMainHandItem();
+            if (held.getItem() instanceof Rifle) {
+                damage *= 2.0;
+            }
+        }
+        return damage;
     }
 
     @Override

@@ -14,6 +14,6 @@ public class BowBItem extends BowItem {
     // 核心：告诉弓什么样的物品可作为弹药
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
-        return (stack) -> stack.getItem() == ModItems.BULLET.get(); // 只接受你的子弹
+        return (stack) -> stack.getItem() == ModItems.BULLET.get();
     }
 }
