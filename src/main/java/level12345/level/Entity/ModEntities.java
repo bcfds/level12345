@@ -38,4 +38,11 @@ public class ModEntities{
                             .clientTrackingRange(4)
                             .updateInterval(20)
                             .build("bullet"));
+    public static final RegistryObject<EntityType<bullet>> compress_firesalt =
+            ENTITY_TYPES.register("compress_firesalt",
+                    () -> EntityType.Builder.<bullet>of(bullet::new, MobCategory.MISC)
+                            .sized(0.5F, 0.5F)
+                            .clientTrackingRange(4)
+                            .updateInterval(20)
+                            .build("compress_firesalt"));
 }

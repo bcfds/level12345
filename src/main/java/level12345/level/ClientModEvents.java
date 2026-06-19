@@ -17,5 +17,6 @@ public class ClientModEvents {
         event.registerEntityRenderer(ModEntities.LIGHTNING_IN_A_BOTTLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.FIRESALT.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.bullet.get(), CustomArrowRenderer::new);
+        event.registerEntityRenderer(ModEntities.compress_firesalt.get(), CustomArrowRenderer::new);
     }
 }

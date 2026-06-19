@@ -39,6 +39,7 @@ public class ModItems {
     public static final RegistryObject<Item> crowbar = AtuoRegister("crowbar",() -> new Modtoolcrowbar(Tiers.WOOD,5,-2.8F,new Item.Properties().durability(256)));
     public static final RegistryObject<Item> steel_sword = AtuoRegister("steel_sword",() -> new SwordItem(Tiers.NETHERITE,12,-2.4F,new Item.Properties().durability(352757)));
     public static final RegistryObject<Item> BULLET = AtuoRegister("bullet", () -> new BulletItem(new Item.Properties().stacksTo(64)));
+    public static final RegistryObject<Item> Compressfiresalt = AtuoRegister("compressfiresalt", () -> new Compress_firesalt(new Item.Properties().stacksTo(64)));
     public static final RegistryObject<Item> BOWB = AtuoRegister("bowb",()->new BowBItem(new Item.Properties().durability(128)));
     public static final RegistryObject<Item> RIFLE = AtuoRegister("rifle",()->new Rifle(new Item.Properties().durability(12800)));
 
