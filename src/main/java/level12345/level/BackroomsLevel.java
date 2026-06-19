@@ -9,6 +9,7 @@ import level12345.level.Block.ModBlocks;
 import level12345.level.CreativeModeTabs.ModCreativeModeTabs;
 import level12345.level.Entity.ModEntities;
 import level12345.level.Item.ModItems;
+import level12345.level.Item.Rifle;
 import level12345.level.WorldGen.ModBiomes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;

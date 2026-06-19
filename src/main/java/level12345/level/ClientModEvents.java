@@ -2,9 +2,7 @@ package level12345.level;
 
 import level12345.level.Entity.ModEntities;
 import level12345.level.Entity.projectile.CustomArrowRenderer;
-import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
