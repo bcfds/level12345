@@ -1,4 +1,4 @@
-package level12345.level.Block.custom;
+package level12345.level.Block.Portal;
 
 import level12345.level.WorldGen.portal.ModTeleporter;
 import net.minecraft.core.BlockPos;

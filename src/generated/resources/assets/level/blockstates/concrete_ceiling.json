@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "level:block/concrete_ceiling"
+      "model": "level:block/level1/concrete_ceiling"
     }
   }
 }

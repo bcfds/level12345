@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "level:block/light_tube_on"
+      "model": "level:block/level1/light_tube_on"
     }
   }
 }
