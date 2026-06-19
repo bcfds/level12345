@@ -1,7 +1,5 @@
 package level12345.level.WorldGen.portal;
 
-import level12345.level.Block.ModBlocks;
-import level12345.level.Block.custom.LEVLE1PortalBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
