@@ -27,12 +27,13 @@ public class ModArmorMaterial implements ArmorMaterial {
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredient;
     private final float projectileResistance;
+    private final float specialresistance;
 
     public ModArmorMaterial(String name, int durabilityMultiplier,
                             Map<ArmorItem.Type, Integer> defenseMap,
                             int enchantability, SoundEvent equipSound,
                             float toughness, float knockbackResistance,
-                            Supplier<Ingredient> repairIngredient,float projectileResistance) {
+                            Supplier<Ingredient> repairIngredient,float projectileResistance,float specialresistance) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.defenseMap = defenseMap;
@@ -42,6 +43,7 @@ public class ModArmorMaterial implements ArmorMaterial {
         this.knockbackResistance = knockbackResistance;
         this.repairIngredient = repairIngredient;
         this.projectileResistance = projectileResistance;
+        this.specialresistance = specialresistance;
     }
 
     @Override public int getDurabilityForType(ArmorItem.Type type) {
@@ -63,5 +65,8 @@ public class ModArmorMaterial implements ArmorMaterial {
     @Override public float getKnockbackResistance() { return knockbackResistance; }
     public float getProjectileResistance() {
         return projectileResistance;
+    }
+    public float getSpecialresistance() {
+        return specialresistance;
     }
 }

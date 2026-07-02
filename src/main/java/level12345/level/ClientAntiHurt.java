@@ -1,0 +1,31 @@
+package level12345.level;
+
+import level12345.level.Item.Flamethrower;
+import level12345.level.Item.LightningInABottleItem;
+import level12345.level.Item.Rifle;
+import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+@Mod.EventBusSubscriber(modid = BackroomsLevel.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class ClientAntiHurt {
+    @SubscribeEvent
+    public static void onLivingHurt(LivingHurtEvent event) {
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (player.getMainHandItem().getItem() instanceof Rifle) {
+                event.getEntity().invulnerableTime = 0;
+            }
+        }
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (player.getMainHandItem().getItem() instanceof LightningInABottleItem) {
+                event.getEntity().invulnerableTime = 0;
+            }
+        }
+        if (event.getSource().getEntity() instanceof Player player) {
+            if (player.getMainHandItem().getItem() instanceof Flamethrower) {
+                event.getEntity().invulnerableTime = 0;
+            }
+        }
+    }
+}

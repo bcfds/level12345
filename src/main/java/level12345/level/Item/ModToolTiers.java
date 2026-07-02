@@ -8,7 +8,6 @@ import java.util.function.Supplier;
 
 public class ModToolTiers implements Tier {
 
-
     private final int level;
     private final int uses;
     private final float speed;

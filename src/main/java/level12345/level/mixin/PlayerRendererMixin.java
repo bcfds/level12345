@@ -1,5 +1,6 @@
 package level12345.level.mixin;
 
+import level12345.level.Item.Flamethrower;
 import level12345.level.Item.Rifle;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -19,7 +20,11 @@ public abstract class PlayerRendererMixin {
         // 检查主手物品
         ItemStack mainHandItem = player.getItemInHand(InteractionHand.MAIN_HAND);
         if (mainHandItem.getItem() instanceof Rifle) {
-            // 强制手臂姿势为 CROSSBOW_HOLD（双手端枪）
+            HumanoidModel<AbstractClientPlayer> model = ((PlayerRenderer)(Object)this).getModel();
+            model.rightArmPose = HumanoidModel.ArmPose.CROSSBOW_HOLD;
+            model.leftArmPose = HumanoidModel.ArmPose.CROSSBOW_HOLD;
+        }
+        if (mainHandItem.getItem() instanceof Flamethrower) {
             HumanoidModel<AbstractClientPlayer> model = ((PlayerRenderer)(Object)this).getModel();
             model.rightArmPose = HumanoidModel.ArmPose.CROSSBOW_HOLD;
             model.leftArmPose = HumanoidModel.ArmPose.CROSSBOW_HOLD;

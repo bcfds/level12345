@@ -39,4 +39,23 @@ public class ArmorEffectHandler {
             event.setAmount(newDamage);
         }
     }
+    @SubscribeEvent
+    public static void onAHurt(LivingHurtEvent event){
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (!event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) return;
+        float totalResistance1 = 0.0F;
+        for (ItemStack armorStack : player.getArmorSlots()) {
+            if (armorStack.getItem() instanceof ArmorItem armorItem) {
+                ArmorMaterial material = armorItem.getMaterial();
+                if (material instanceof ModArmorMaterial modMaterial) {
+                    totalResistance1 += modMaterial.getSpecialresistance();
+                }
+            }
+        }
+        if (totalResistance1 > 1.0F) totalResistance1 = 1.0F;
+        if (totalResistance1 > 0.0F) {
+            float newDamage = event.getAmount() * (1.0F - totalResistance1);
+            event.setAmount(newDamage);
+        }
+    }
 }

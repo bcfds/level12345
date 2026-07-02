@@ -8,6 +8,7 @@ import level12345.level.Capability.sanity.SanitySyncPacket;
 import level12345.level.Block.ModBlocks;
 import level12345.level.CreativeModeTabs.ModCreativeModeTabs;
 import level12345.level.Entity.ModEntities;
+import level12345.level.Entity.custom.SmilerEntity;
 import level12345.level.Item.ModItems;
 import level12345.level.Item.Rifle;
 import level12345.level.WorldGen.ModBiomes;
@@ -15,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,6 +31,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
+import static level12345.level.Entity.ModEntities.smiler;
 import static level12345.level.Item.ModItems.*;
 
 //TODO 注意看一下IDEA报的“未使用”变量或者方法，检查下是不是真的没有用，不要做超前的冗余设计
@@ -100,7 +103,10 @@ public class BackroomsLevel {
         }
     }
 
-
+    @SubscribeEvent
+    public void onEntityAttributeCreation(EntityAttributeCreationEvent event) {
+        event.put(smiler.get(), SmilerEntity.createAttributes().build());
+    }
 
     public static final SimpleChannel NETWORK = NetworkRegistry.newSimpleChannel(
             ResourceLocation.fromNamespaceAndPath(MOD_ID, "sanity_sync"),

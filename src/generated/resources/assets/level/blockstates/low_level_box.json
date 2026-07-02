@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "level:block/level1/low_level_box"
+		}
+	}
+}

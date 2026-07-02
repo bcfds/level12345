@@ -1,0 +1,22 @@
+{
+  "item.level.steel_sword": "钢刃",
+  "item.level.fire_salt": "火盐",
+  "item.level.lightning_in_a_bottle": "瓶装闪电",
+  "item.level.warp_berries": "跃迁浆果",
+  "item.level.crowbar": "撬棍",
+  "item.level.bullet": "子弹",
+  "item.level.compressfiresalt": "压缩火盐",
+  "item.level.bowb": "弹弓",
+  "item.level.rifle": "步枪",
+  "item.level.bsteel_helmet": "防弹钢盔",
+  "item.level.bsteel_chestplate": "防弹背心",
+  "item.level.rigal_kneepads": "战术护膝",
+  "item.level.rigal_boots": "战术军靴",
+  "item.level.flamethrower": "火焰喷射器",
+  "tooltip.level.flamethrower.desc1": "短距离喷射火焰，是大量低血实体的克星",
+  "tooltip.level.Rifle.desc1": "一次可装填三十发子弹，远程攻坚的优质选择",
+  "tooltip.level.bsteel_helmet.desc": "钢制的战术头盔，可以减免大量弹射物伤害",
+  "tooltip.level.bsteel_chestplate.desc": "插入钢板的战术背心，可以减免大量弹射物伤害",
+  "tooltip.level.rigal_kneepads.desc": "特质的护膝，可以减免少量弹射物伤害和大量魔法伤害",
+  "tooltip.level.rigal_boots.desc": "特质的靴子，可以减免少量弹射物伤害和大量魔法伤害"
+}
