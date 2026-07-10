@@ -13,8 +13,10 @@ import level12345.level.Item.ModItems;
 import level12345.level.Item.Rifle;
 import level12345.level.WorldGen.ModBiomes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -57,6 +59,7 @@ public class BackroomsLevel {
         ModCapabilities.register(modEventBus);
         ModEntities.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
 
         //end region
         // 注册通用初始化方法
@@ -78,6 +81,15 @@ public class BackroomsLevel {
             }
         }
         LOGGER.info("BackroomsLevel mod common setup completed.");
+        //笑魇的生成
+        event.enqueueWork(() -> {
+            SpawnPlacements.register(
+                    smiler.get(),
+                    SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    SmilerEntity::canSpawn
+            );
+        });
     }
 
 

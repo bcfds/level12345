@@ -52,7 +52,7 @@ public class ModEntities{
     public static final RegistryObject<EntityType<SmilerEntity>> smiler =
             ENTITY_TYPES.register("smiler",
                     () -> EntityType.Builder.<SmilerEntity>of(SmilerEntity::new, MobCategory.CREATURE)
-                            .sized(1.5F, 1.5F)
+                            .sized(1.5F, 2.5F)
                             .build("smiler"));
 
     public static void register(IEventBus eventBus){

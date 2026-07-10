@@ -52,8 +52,7 @@ public class ModBlocks {
             ()->new Block(BlockBehaviour.Properties.of().strength(-1).explosionResistance(3600000F)));
     public static final RegistryObject<Block> light_tube_off = registerBlock("light_tube_off",
             ()->new Block(BlockBehaviour.Properties.of().strength(-1).explosionResistance(3600000F)));
-    public static final RegistryObject<Block> light_tube_on = registerBlock("light_tube_on",
-            ()->new Block(BlockBehaviour.Properties.of().strength(-1).lightLevel(state -> 15).explosionResistance(3600000F)));
+    public static final RegistryObject<Block> light_tube_on = registerBlock("light_tube_on", ()->new Block(BlockBehaviour.Properties.of().strength(-1).lightLevel((p_152686_) -> {return 15;}).explosionResistance(3600000F)));
     public static final RegistryObject<Block> low_level_box = registerBlock("low_level_box",
             ()->new Block(BlockBehaviour.Properties.of().strength(3).explosionResistance(3600F)));
     public static final RegistryObject<Block> high_level_box = registerBlock("high_level_box",

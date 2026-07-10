@@ -17,6 +17,6 @@
   "tooltip.level.Rifle.desc1": "一次可装填三十发子弹，远程攻坚的优质选择",
   "tooltip.level.bsteel_helmet.desc": "钢制的战术头盔，可以减免大量弹射物伤害",
   "tooltip.level.bsteel_chestplate.desc": "插入钢板的战术背心，可以减免大量弹射物伤害",
-  "tooltip.level.rigal_kneepads.desc": "特质的护膝，可以减免少量弹射物伤害和大量魔法伤害",
-  "tooltip.level.rigal_boots.desc": "特质的靴子，可以减免少量弹射物伤害和大量魔法伤害"
+  "tooltip.level.rigal_kneepads.desc": "特质的护膝，可以减免部分弹射物伤害和大量魔法伤害",
+  "tooltip.level.rigal_boots.desc": "特质的靴子，可以减免部分弹射物伤害和大量魔法伤害"
 }

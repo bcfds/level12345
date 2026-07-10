@@ -64,6 +64,9 @@ public class bullet extends AbstractArrow {
         if (target instanceof SmilerEntity) {
             damage *= 5.0F;
         }
+        if (target instanceof Player) {
+            damage *= 1.25F;
+        }
         if (target.hurt(damageSource, damage)) {
             if (target instanceof LivingEntity livingTarget) {
                 this.doPostHurtEffects(livingTarget);

@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "level.refmap.json",
   "mixins": [
+    "NaturalSpawnerMixin"
   ],
   "client": [
     "PlayerRendererMixin"
