@@ -5,6 +5,8 @@
   "item.level.warp_berries": "跃迁浆果",
   "item.level.crowbar": "撬棍",
   "item.level.bullet": "子弹",
+  "item.level.iron_bottle": "铁瓶",
+  "tooltip.level.bottle.empty": "空",
   "item.level.compressfiresalt": "压缩火盐",
   "item.level.bowb": "弹弓",
   "item.level.rifle": "步枪",

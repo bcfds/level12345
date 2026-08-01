@@ -23,7 +23,7 @@ public class FluorescentTube extends Block implements SimpleWaterloggedBlock {
             Direction.Plane.HORIZONTAL);
 
     public FluorescentTube(Properties properties) {
-        super(properties);// 方块不是完全遮光的,无碰撞体积
+        super(properties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(LIT, true)
                 .setValue(FACING, Direction.NORTH)

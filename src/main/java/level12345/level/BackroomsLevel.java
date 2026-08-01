@@ -9,10 +9,11 @@ import level12345.level.Block.ModBlocks;
 import level12345.level.CreativeModeTabs.ModCreativeModeTabs;
 import level12345.level.Entity.ModEntities;
 import level12345.level.Entity.custom.SmilerEntity;
+import level12345.level.Item.Bottle.BottleItem;
+import level12345.level.Item.Bottle.DrinkEffectHandler;
 import level12345.level.Item.ModItems;
-import level12345.level.Item.Rifle;
-import level12345.level.WorldGen.ModBiomes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -60,7 +61,7 @@ public class BackroomsLevel {
         ModEntities.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
-
+        MinecraftForge.EVENT_BUS.register(new DrinkEffectHandler());
         //end region
         // 注册通用初始化方法
         modEventBus.addListener(this::commonSetup);
@@ -80,7 +81,6 @@ public class BackroomsLevel {
                 ITEMS_CREATIVETAB_SUPPLIER.add(regObj);
             }
         }
-        LOGGER.info("BackroomsLevel mod common setup completed.");
         //笑魇的生成
         event.enqueueWork(() -> {
             SpawnPlacements.register(
@@ -90,6 +90,11 @@ public class BackroomsLevel {
                     SmilerEntity::canSpawn
             );
         });
+        ItemProperties.register(
+                ModItems.IRON_BOTTLE.get(),
+                    new ResourceLocation(MOD_ID, "filled"),
+                (stack, level, entity, seed) -> BottleItem.getFluid(stack).isEmpty() ? 0.0f : 1.0f);
+        LOGGER.info("BackroomsLevel mod common setup completed.");
     }
 
 

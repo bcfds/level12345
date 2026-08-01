@@ -20,7 +20,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, BackroomsLevel.MOD_ID);
 
     private static void registerBlockitems(String name, Supplier<? extends Block> block){
-        ModItems.AtuoRegister(name, ()->new BlockItem(block.get(),new Item.Properties()));
+        ModItems.AutoRegister(name, ()->new BlockItem(block.get(),new Item.Properties()));
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
