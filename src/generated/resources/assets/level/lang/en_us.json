@@ -15,10 +15,16 @@
   "item.level.rigal_kneepads": "Tactical Kneepads",
   "item.level.rigal_boots": "Tactical Boots",
   "item.level.flamethrower": "Flamethrower",
+  "block.level.level0_floor": "Level0 floor",
+  "block.level.level0_wall": "Level0 wall",
+  "block.level.level0_ceiling": "Level0 ceiling",
+  "block.level.glass": "galss(unbreakable)",
   "tooltip.level.flamethrower.desc1": "Sprays flames at short range, effective against large groups of low-health entities.",
   "tooltip.level.Rifle.desc1": "Holds up to thirty rounds. A reliable choice for long-range engagements.",
   "tooltip.level.bsteel_helmet.desc": "A steel tactical helmet that greatly reduces projectile damage.",
   "tooltip.level.bsteel_chestplate.desc": "A tactical vest with steel plates inserted, greatly reducing projectile damage.",
   "tooltip.level.rigal_kneepads.desc": "Specialized kneepads that reduce some projectile damage and a large amount of magic damage.",
-  "tooltip.level.rigal_boots.desc": "Specialized boots that reduce some projectile damage and a large amount of magic damage."
+  "tooltip.level.rigal_boots.desc": "Specialized boots that reduce some projectile damage and a large amount of magic damage.",
+  "creativemodtab.level.level_items": "TBC items",
+  "creativemodtab.level.level_blocks": "TBC blocks"
 }

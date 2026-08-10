@@ -2,7 +2,6 @@ package level12345.level.mixin;
 
 import level12345.level.Entity.ModEntities;
 import level12345.level.Entity.custom.SmilerEntity;
-import level12345.level.Register;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -11,6 +10,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import net.minecraft.world.level.NaturalSpawner;
@@ -19,12 +19,16 @@ import java.util.Map;
 
 @Mixin(NaturalSpawner.class)
 public abstract class NaturalSpawnerMixin {
+    @Unique
     private static final double SPAWN_CHANCE = 0.2;
+    @Unique
     private static final int MAX_SMILER = 1;
+    @Unique
     private static final Map<ResourceKey<Level>, Integer> DIMENSION_RADIUS = Map.of(
             ResourceKey.create(Registries.DIMENSION, new net.minecraft.resources.ResourceLocation("level", "level1")), 128
             // 有新维度直接复制黏贴孩子们
     );
+    @Unique
     private static final int DEFAULT_RADIUS = 128;
 
     @Redirect(
@@ -32,8 +36,7 @@ public abstract class NaturalSpawnerMixin {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/server/level/ServerLevel;addFreshEntityWithPassengers(Lnet/minecraft/world/entity/Entity;)V"
-            ),
-            remap = false
+            )
     )
     private static void redirectAddFreshEntity(ServerLevel level, Entity entity) {
         if (entity.getType() != ModEntities.smiler.get()) {

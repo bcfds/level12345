@@ -3,6 +3,7 @@ package level12345.level.Entity.custom;
 import level12345.level.Entity.projectile.LightningInABottle;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -23,8 +24,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.NotNull;
 
 public class SmilerEntity extends Monster {
     public SmilerEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
@@ -48,14 +49,14 @@ public class SmilerEntity extends Monster {
         if (random.nextInt(10) != 0) return false;
         Holder<Biome> biome = level.getBiome(pos);
         ResourceLocation biomeName = biome.unwrapKey()
-                .map(key -> key.location())
+                .map(ResourceKey::location)
                 .orElse(null);
         if (biomeName != null && biomeName.equals(new ResourceLocation("level", "l1_biome"))) {
             int chunkX = pos.getX() >> 4;
             int chunkZ = pos.getZ() >> 4;
             AABB chunkBounds = new AABB(chunkX << 4, level.getMinBuildHeight(), chunkZ << 4, (chunkX << 4) + 16, level.getMaxBuildHeight(), (chunkZ << 4) + 16);
             int existingSmilers = level.getEntitiesOfClass(SmilerEntity.class, chunkBounds, e -> true).size();
-            if (existingSmilers >= 1) return false;
+            return existingSmilers < 1;
         }
         return true;
     }
@@ -71,7 +72,7 @@ public class SmilerEntity extends Monster {
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.75D);
     }
     @Override
-    public boolean hurt(DamageSource source, float amount) {
+    public boolean hurt(@NotNull DamageSource source, float amount) {
         int blockLight = this.level().getBrightness(LightLayer.BLOCK, this.blockPosition());
         if (blockLight < 1 && !this.isOnFire()) {
             if (source.getDirectEntity() instanceof LightningInABottle) {

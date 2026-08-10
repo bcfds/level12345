@@ -13,6 +13,8 @@ import level12345.level.Item.Bottle.BottleItem;
 import level12345.level.Item.Bottle.DrinkEffectHandler;
 import level12345.level.Item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.BlockItem;
@@ -82,14 +84,12 @@ public class BackroomsLevel {
             }
         }
         //笑魇的生成
-        event.enqueueWork(() -> {
-            SpawnPlacements.register(
-                    smiler.get(),
-                    SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                    SmilerEntity::canSpawn
-            );
-        });
+        event.enqueueWork(() -> SpawnPlacements.register(
+                smiler.get(),
+                SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                SmilerEntity::canSpawn
+        ));
         ItemProperties.register(
                 ModItems.IRON_BOTTLE.get(),
                     new ResourceLocation(MOD_ID, "filled"),
@@ -117,6 +117,10 @@ public class BackroomsLevel {
             // 确保 SanityRender 类被加载，以触发其 @EventBusSubscriber
             SanityRender.class.toString();
             BackroomsLevel.LOGGER.info("SanityRender registered for client.");
+            event.enqueueWork(() -> ItemBlockRenderTypes.setRenderLayer(
+                    ModBlocks.GLASS.get(),
+                    RenderType.translucent()
+            ));
         }
     }
 

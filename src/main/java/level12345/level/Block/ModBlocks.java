@@ -6,7 +6,11 @@ import level12345.level.Block.custom.*;
 import level12345.level.Item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.GlassBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -48,18 +52,26 @@ public class ModBlocks {
             ()->new Block(BlockBehaviour.Properties.of().strength(-1).explosionResistance(3600000F)));
     public static final RegistryObject<Block> concrete_wall = registerBlock("concrete_wall",
             ()->new Block(BlockBehaviour.Properties.of().strength(-1).explosionResistance(3600000F)));
-    public static final RegistryObject<Block> cracked_concrete_floor = registerBlock("cracked_concrete_floor",
+    public static final RegistryObject<Block> concrete_floor_cracked = registerBlock("concrete_floor_cracked",
             ()->new Block(BlockBehaviour.Properties.of().strength(-1).explosionResistance(3600000F)));
     public static final RegistryObject<Block> light_tube_off = registerBlock("light_tube_off",
             ()->new Block(BlockBehaviour.Properties.of().strength(-1).explosionResistance(3600000F)));
-    public static final RegistryObject<Block> light_tube_on = registerBlock("light_tube_on", ()->new Block(BlockBehaviour.Properties.of().strength(-1).lightLevel((p_152686_) -> {return 15;}).explosionResistance(3600000F)));
+    public static final RegistryObject<Block> light_tube_on = registerBlock("light_tube_on",
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1).lightLevel((p_152686_) -> {return 15;}).explosionResistance(3600000F)));
     public static final RegistryObject<Block> low_level_box = registerBlock("low_level_box",
             ()->new Block(BlockBehaviour.Properties.of().strength(3).explosionResistance(3600F)));
     public static final RegistryObject<Block> high_level_box = registerBlock("high_level_box",
             ()->new Block(BlockBehaviour.Properties.of().strength(5).explosionResistance(3600F)));
     public static final RegistryObject<Block> fluorescent_tube = registerBlock("fluorescent_tube",
             ()->new FluorescentTube(BlockBehaviour.Properties.of().noOcclusion().strength(-1).lightLevel(state -> state.getValue(FluorescentTube.LIT) ? 15 : 0).explosionResistance(3600000F)));
-
+    public static final RegistryObject<Block> LEVEL0_FLOOR = registerBlock("level0_floor",
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1,3600000F).noLootTable()));
+    public static final RegistryObject<Block> LEVEL0_WALL = registerBlock("level0_wall",
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1,3600000F).noLootTable()));
+    public static final RegistryObject<Block> LEVEL0_CEILING = registerBlock("level0_ceiling",
+            ()->new Block(BlockBehaviour.Properties.of().strength(-1,3600000F).noLootTable()));
+    public static final RegistryObject<Block> GLASS = registerBlock("glass",
+            () -> new GlassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.NONE).instrument(NoteBlockInstrument.HAT).strength(-1.0F, 3600000.0F).noOcclusion().isValidSpawn((state, level, pos, entity) -> false).isRedstoneConductor((state, level, pos) -> false).isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false).sound(SoundType.GLASS).noLootTable()));
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

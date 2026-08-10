@@ -21,14 +21,14 @@ public class ModCreativeModeTabs {
     public static final RegistryObject<CreativeModeTab>  LEVEL_ITEMS =
             CREATIVE_MODE_TABS.register("level_items",() -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(ModItems.LIGHTNING_IN_A_BOTTLE.get()))
-                    .title(Component.translatable("level_items"))
+                    .title(Component.translatable("creativemodtab.level.level_items"))
                     .displayItems((pParameters, pOutput) -> {
                         ModItems.ITEMS_CREATIVETAB_SUPPLIER.forEach(item->pOutput.accept(item.get()));
                     }).build());
     public static final RegistryObject<CreativeModeTab>  LEVEL_BLOCKS =
             CREATIVE_MODE_TABS.register("level_blocks",() -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(ModBlocks.LEVEL1_PORTAL.get()))
-                    .title(Component.translatable("level_blocks"))
+                    .title(Component.translatable("creativemodtab.level.level_blocks"))
                     .displayItems((pParameters, pOutput) -> {
                         ModItems.BLOCKITEMS_CREATIVETAB_SUPPLIER.forEach(item->pOutput.accept(item.get()));
                     }).build());
