@@ -2,13 +2,11 @@ package level12345.level.Entity.custom;
 
 import level12345.level.Entity.projectile.LightningInABottle;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -23,7 +21,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,26 +37,32 @@ public class SmilerEntity extends Monster {
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, false));
-        this.setAggressive(true);
     }
-    //孩子们这是笑魇的生成机制，但是原版的机制太几把坑了，咋写都改不了，气笑了
     public static boolean canSpawn(EntityType<SmilerEntity> type, ServerLevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        // 1. 基础环境检查
         if (level.getBrightness(LightLayer.BLOCK, pos) >= 1) return false;
         if (!checkMobSpawnRules(type, level, spawnType, pos, random)) return false;
-        if (random.nextInt(10) != 0) return false;
-        Holder<Biome> biome = level.getBiome(pos);
-        ResourceLocation biomeName = biome.unwrapKey()
-                .map(ResourceKey::location)
-                .orElse(null);
-        if (biomeName != null && biomeName.equals(new ResourceLocation("level", "l1_biome"))) {
-            int chunkX = pos.getX() >> 4;
-            int chunkZ = pos.getZ() >> 4;
-            AABB chunkBounds = new AABB(chunkX << 4, level.getMinBuildHeight(), chunkZ << 4, (chunkX << 4) + 16, level.getMaxBuildHeight(), (chunkZ << 4) + 16);
-            int existingSmilers = level.getEntitiesOfClass(SmilerEntity.class, chunkBounds, e -> true).size();
-            return existingSmilers < 1;
+
+        // 2. 维度白名单
+        // 明确只在 level:level1 维度生成，其他维度直接拒绝
+        ResourceLocation dimensionId = level.getLevel().dimension().location();
+        if (!dimensionId.equals(new ResourceLocation("level", "level1"))) {
+            return false;
         }
-        return true;
+
+        // 3. 统一概率控制
+        // 按需调整：nextInt(20)=5% | nextInt(10)=10% | nextInt(50)=2%
+        if (random.nextInt(100) != 0) return false;// 1% 生成率
+
+        // 128 格半径密度控制（只在自然生成时执行）
+        long nearby = level.getLevel().getEntitiesOfClass(
+                SmilerEntity.class,
+                new AABB(pos).inflate(128),
+                e -> true
+        ).size();
+        return nearby < 1;
     }
+
     public static AttributeSupplier.Builder createAttributes(){
         return Monster.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 300.0D)
@@ -73,16 +76,16 @@ public class SmilerEntity extends Monster {
     }
     @Override
     public boolean hurt(@NotNull DamageSource source, float amount) {
-        int blockLight = this.level().getBrightness(LightLayer.BLOCK, this.blockPosition());
-        if (blockLight < 1 && !this.isOnFire()) {
+        int totalLight = this.level().getBrightness(LightLayer.SKY, this.blockPosition()) + this.level().getBrightness(LightLayer.BLOCK, this.blockPosition());
+        if (totalLight < 1 && !this.isOnFire()) {
+            if (source.is(DamageTypes.GENERIC_KILL)
+                    || (source.getEntity() instanceof ServerPlayer player && player.isCreative()))
+                return super.hurt(source, amount);
             if (source.getDirectEntity() instanceof LightningInABottle) {
                 return super.hurt(source, amount);
             }
             return false;
         }
         return super.hurt(source, amount);
-    }
-    public AgeableMob getBreedOffspring(ServerLevel pLevel,AgeableMob pOtherParent){
-        return null;
     }
 }

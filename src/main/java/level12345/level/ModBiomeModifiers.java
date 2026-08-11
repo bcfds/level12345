@@ -29,7 +29,6 @@ public class ModBiomeModifiers {
         public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
             if (phase == Phase.ADD) {
                 if (biome.is(new ResourceLocation("level:l1_biome"))) {
-
                     builder.getMobSpawnSettings().addSpawn(
                             MobCategory.MONSTER,
                             new MobSpawnSettings.SpawnerData(

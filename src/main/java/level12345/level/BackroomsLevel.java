@@ -8,6 +8,7 @@ import level12345.level.Capability.sanity.SanitySyncPacket;
 import level12345.level.Block.ModBlocks;
 import level12345.level.CreativeModeTabs.ModCreativeModeTabs;
 import level12345.level.Entity.ModEntities;
+import level12345.level.Entity.client.smilerRenderer;
 import level12345.level.Entity.custom.SmilerEntity;
 import level12345.level.Item.Bottle.BottleItem;
 import level12345.level.Item.Bottle.DrinkEffectHandler;
@@ -15,6 +16,7 @@ import level12345.level.Item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.BlockItem;
@@ -89,7 +91,7 @@ public class BackroomsLevel {
                 SpawnPlacements.Type.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 SmilerEntity::canSpawn
-        ));
+        ));//TODO 这么注册消炎生成器早晚炸死我们,但现在没事所以咱不管
         ItemProperties.register(
                 ModItems.IRON_BOTTLE.get(),
                     new ResourceLocation(MOD_ID, "filled"),
@@ -121,6 +123,9 @@ public class BackroomsLevel {
                     ModBlocks.GLASS.get(),
                     RenderType.translucent()
             ));
+            event.enqueueWork(() -> {
+                EntityRenderers.register(ModEntities.smiler.get(), smilerRenderer::new);
+            });
         }
     }
 

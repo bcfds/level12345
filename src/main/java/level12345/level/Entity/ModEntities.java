@@ -51,8 +51,9 @@ public class ModEntities{
                             .build("flame"));
     public static final RegistryObject<EntityType<SmilerEntity>> smiler =
             ENTITY_TYPES.register("smiler",
-                    () -> EntityType.Builder.<SmilerEntity>of(SmilerEntity::new, MobCategory.CREATURE)
-                            .sized(1.5F, 2.5F)
+                    () -> EntityType.Builder.of(SmilerEntity::new, MobCategory.CREATURE)
+                            .sized(1.5F, 1.5F)
+                            .clientTrackingRange(8)
                             .build("smiler"));
 
     public static void register(IEventBus eventBus){
