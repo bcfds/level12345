@@ -1,0 +1,45 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.8,
+  "downfall": 0.4,
+  "category": "plains",
+  "effects": {
+    "sky_color": 7907327,
+    "fog_color": 12638463,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "grass_color": 8620649,
+    "foliage_color": 8620649,
+    "mood_sound": {
+      "tick_delay": 6000,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.cave",
+      "block_search_extent": 8
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "tbccore:smiler",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 1
+      }
+    ],
+    "creature": [
+    ]
+  },
+  "spawn_costs": {
+    "tbccore:smiler": {
+      "energy_budget": 0.5,
+      "charge": 0.5
+    }
+  },
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    ["minecraft:flower_default"],
+    ["minecraft:patch_grass_plain"]
+  ]
+}

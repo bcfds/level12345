@@ -1,0 +1,13 @@
+{
+  "type": "tbccore:level1_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "layers": [],
+      "biome": "tbccore:l1_biome",
+      "features": false,
+      "lakes": false,
+      "structure_overrides": ["tbccore:test1","tbccore:test4"]
+    }
+  }
+}

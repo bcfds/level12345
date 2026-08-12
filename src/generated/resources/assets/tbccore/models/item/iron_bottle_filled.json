@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tbccore:item/iron_bottle_filled"
+  }
+}

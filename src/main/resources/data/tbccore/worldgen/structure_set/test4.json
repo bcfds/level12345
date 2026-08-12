@@ -1,0 +1,13 @@
+{
+  "structures": [{
+    "structure": "tbccore:test4",
+    "weight": 1
+  }],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 123456789,
+    "spacing": 12,
+    "separation": 10,
+    "spread_type": "linear"
+  }
+}

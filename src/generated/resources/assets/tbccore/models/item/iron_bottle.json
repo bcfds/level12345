@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tbccore:item/iron_bottle_empty"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "level:filled": 1.0
+      },
+      "model": "tbccore:item/iron_bottle_filled"
+    }
+  ]
+}

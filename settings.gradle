@@ -1,6 +1,5 @@
 pluginManagement {
     repositories {
-        maven { url = 'https://maven.parchmentmc.org' }
         gradlePluginPortal()
         maven {
             name = 'MinecraftForge'
@@ -16,4 +15,4 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
 }
 
-rootProject.name = 'level12345'
+rootProject.name = 'tbccore'
